@@ -1,32 +1,36 @@
-function addPerson(person) {
-    let personJSON = JSON.stringify(person);
-
-    let xmlHttpRequest = new XMLHttpRequest();
-
-    xmlHttpRequest.open('POST', '/people', true);
-    xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-    xmlHttpRequest.send(personJSON);
-
-    if (xmlHttpRequest.status !== 204) {
-        addToPersonList(person);
+class Model {
+    constructor(XMLHttpRequest) {
+        this.xmlHttpRequest = XMLHttpRequest;
     }
-}
 
-function updatePersons() {
-    let xmlHttpRequest = new XMLHttpRequest();
+    addPerson(person) {
+        let personJSON = JSON.stringify(person);
 
-    xmlHttpRequest.open('GET', '/people', true);
+        this.xmlHttpRequest.open('POST', '/people', true);
+        this.xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-    xmlHttpRequest.send();
+        this.xmlHttpRequest.send(personJSON);
 
-    xmlHttpRequest.onload = () => {
-        if (xmlHttpRequest.status !== 200) {
-            alert(xmlHttpRequest.status + ': ' + xmlHttpRequest.statusText);
-        } else {
-            const people = JSON.parse(xmlHttpRequest.responseText);
-            updatePersonList(people);
+        if (this.xmlHttpRequest.status !== 204) {
+            addToPersonList(person);
         }
+    }
 
+    getPersonList() {
+        this.xmlHttpRequest.open('GET', '/people', true);
+
+        this.xmlHttpRequest.send();
+
+        this.xmlHttpRequest.onload = () => {
+            if (this.xmlHttpRequest.status !== 200) {
+                alert(this.xmlHttpRequest.status + ': ' + this.xmlHttpRequest.statusText);
+            } else {
+                let people = JSON.parse(this.xmlHttpRequest.responseText);
+                updatePersonList(people);
+            }
+
+        }
     }
 }
+
+let model = new Model(new XMLHttpRequest());

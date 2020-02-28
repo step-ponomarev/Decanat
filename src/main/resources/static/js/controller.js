@@ -8,5 +8,5 @@ function newPerson() {
         type: null
     };
 
-    addPerson(person);
+    model.addPerson(person);
 }
