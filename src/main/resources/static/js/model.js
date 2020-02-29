@@ -10,6 +10,11 @@ class Model {
         this.xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
         this.xmlHttpRequest.send(personJSON);
+
+        this.xmlHttpRequest.onload(() => {
+            const person = JSON.parse(this.xmlHttpRequest.responseText);
+            console.log(person.id);
+        });
     }
 
     getPersonList(render) {

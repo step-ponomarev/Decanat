@@ -45,7 +45,12 @@ class PersonFormView {
     }
 
     _addEventListeners() {
-        this._element.querySelector('#addPersonButton').addEventListener('click', this._onclickListener);
+        this._element.querySelector('#addPersonButton').addEventListener('click', this._onclickListener); // Не работает
+        this._element.querySelector('#addPersonButton').addEventListener('click', this.say); // не работает
+    }
+
+    say() {
+        alert('Hi!');
     }
 
     _removeEventListeners() {
@@ -67,7 +72,12 @@ class PersonListView {
 
     render(person) {
         this._removeEventListeners();
+
+        if (this._element.querySelector('#personlist')) {
+            this._element.querySelector('#personlist').remove();
+        }
         this._element.innerHTML += this.template;
+
         this._updatePersonList(person);
         this._addEventListener();
     }

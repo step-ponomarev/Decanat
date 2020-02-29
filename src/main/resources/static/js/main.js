@@ -4,11 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let model = new Model(new XMLHttpRequest());
     let view = new MainView(element);
 
-    let personCreateController = new PersonCreateController(model, view.personListViev);
+    let controller = new MainController(model, view);
 
-    let personFormController = new PersonFormController(model, view.personFormView);
-
-    let mainController = new MainController(model, view);
-
-    mainController.start();
+    controller.start();
 });
