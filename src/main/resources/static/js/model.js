@@ -10,13 +10,9 @@ class Model {
         this.xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
         this.xmlHttpRequest.send(personJSON);
-
-        if (this.xmlHttpRequest.status !== 204) {
-            addToPersonList(person);
-        }
     }
 
-    getPersonList() {
+    getPersonList(render) {
         this.xmlHttpRequest.open('GET', '/people', true);
 
         this.xmlHttpRequest.send();
@@ -26,11 +22,9 @@ class Model {
                 alert(this.xmlHttpRequest.status + ': ' + this.xmlHttpRequest.statusText);
             } else {
                 let people = JSON.parse(this.xmlHttpRequest.responseText);
-                updatePersonList(people);
+                render(people);
             }
 
         }
     }
 }
-
-let model = new Model(new XMLHttpRequest());
