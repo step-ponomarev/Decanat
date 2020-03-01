@@ -7,4 +7,4 @@ document.addEventListener("DOMContentLoaded", () => {
     let controller = new MainController(model, view);
 
     controller.start();
-});
+}, false);

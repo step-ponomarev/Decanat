@@ -15,9 +15,8 @@ class MainController {
     }
 
     onSubmit() {
-
-        console.log('It works');
-        let person = {
+        alert('hi!');
+        /*let person = {
             id: null,
             firstname: element.querySelector("#firstname").value,
             lastname: element.querySelector("#lastname").value,
@@ -26,7 +25,7 @@ class MainController {
             type: null
         };
 
-        this.model.addPerson(person);
+        this.model.addPerson(person);*/
     }
 
     onChange() {

@@ -1,6 +1,6 @@
 class PersonFormView {
     constructor(element) {
-        this.template = '<form id="addPersonForm">' +
+        this.template = '<form id="addPersonForm" onsubmit="preventDefault()">' +
             '<div class="input-group">' +
             '   <div class="input-group-prepend">' +
             '     <span class="input-group-text">First, last and pather name</span>' +
@@ -9,7 +9,8 @@ class PersonFormView {
             ' placeholder="First name">' +
             '  <input type="text" aria-label="Last name" class="form-control" id="lastname" placeholder="Last name">' +
             '  <input type="text" aria-label="Last name" class="form-control" id="pathername" placeholder="Pather name">' +
-            '  <button type="submit" class="btn btn-primary" id="addPersonButton">Add person</button>' +
+            '  <button type="button" class="btn btn-primary" id="addPersonButton">Add' +
+            ' person</button>' +
             '</div>' +
             '</form>';
 
@@ -40,23 +41,16 @@ class PersonFormView {
         return this._onclickListener;
     }
 
-    get form() {
-        return this._element.querySelector('#addPersonButton');
-    }
-
     _addEventListeners() {
-        this._element.querySelector('#addPersonButton').addEventListener('click', this._onclickListener); // Не работает
-        this._element.querySelector('#addPersonButton').addEventListener('click', this.say); // не работает
-    }
+        this._element.querySelector('#addPersonButton').addEventListener('click', this._onclickListener, false); // Не работает
+        this._element.querySelector('#addPersonForm').onclick();
 
-    say() {
-        alert('Hi!');
     }
 
     _removeEventListeners() {
         const button = this._element.querySelector('#addPersonButton');
         if (button) {
-            button.removeEventListener('click', this._onclickListener);
+            button.removeEventListener('click', this._onclickListener, false);
         }
     }
 }
@@ -73,8 +67,8 @@ class PersonListView {
     render(person) {
         this._removeEventListeners();
 
-        if (this._element.querySelector('#personlist')) {
-            this._element.querySelector('#personlist').remove();
+        if (this._element.querySelector('#personList')) {
+            this._element.querySelector('#personList').remove();
         }
         this._element.innerHTML += this.template;
 
@@ -111,13 +105,13 @@ class PersonListView {
     }
 
     _addEventListener() {
-        this._element.querySelector("#personList").addEventListener('change', this._onchangeListener);
+        this._element.querySelector("#personList").addEventListener('change', function() { this._onchangeListener();}, false);
     }
 
     _removeEventListeners() {
         const select = this._element.querySelector("#personList");
         if (select) {
-            select.removeEventListener('change', this._onchangeListener);
+            select.removeEventListener('change', function() { this._onchangeListener();}, false);
         }
     }
 }
