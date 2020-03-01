@@ -1,3 +1,5 @@
+"use strict";
+
 class Model {
     constructor(XMLHttpRequest) {
         this.xmlHttpRequest = XMLHttpRequest;

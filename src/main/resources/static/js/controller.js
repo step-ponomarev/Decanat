@@ -1,3 +1,5 @@
+"use strict";
+
 class MainController {
     constructor(model, view) {
         this.model = model;

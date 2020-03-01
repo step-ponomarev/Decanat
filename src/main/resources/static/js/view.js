@@ -1,6 +1,7 @@
+"use strict";
 class PersonFormView {
     constructor(element) {
-        this.template = '<form id="addPersonForm" onsubmit="preventDefault()">' +
+        this.template = '<form id="addPersonForm">' +
             '<div class="input-group">' +
             '   <div class="input-group-prepend">' +
             '     <span class="input-group-text">First, last and pather name</span>' +
@@ -9,7 +10,7 @@ class PersonFormView {
             ' placeholder="First name">' +
             '  <input type="text" aria-label="Last name" class="form-control" id="lastname" placeholder="Last name">' +
             '  <input type="text" aria-label="Last name" class="form-control" id="pathername" placeholder="Pather name">' +
-            '  <button type="button" class="btn btn-primary" id="addPersonButton">Add' +
+            '  <button type="submit" class="btn btn-primary" id="addPersonButton">Add' +
             ' person</button>' +
             '</div>' +
             '</form>';
@@ -42,15 +43,13 @@ class PersonFormView {
     }
 
     _addEventListeners() {
-        this._element.querySelector('#addPersonButton').addEventListener('click', this._onclickListener, false); // Не работает
-        this._element.querySelector('#addPersonForm').onclick();
-
+        this._element.querySelector('#addPersonButton').addEventListener('submit', this._onclickListener, false); // Не
     }
 
     _removeEventListeners() {
         const button = this._element.querySelector('#addPersonButton');
         if (button) {
-            button.removeEventListener('click', this._onclickListener, false);
+            button.removeEventListener('submit', this._onclickListener, false);
         }
     }
 }
