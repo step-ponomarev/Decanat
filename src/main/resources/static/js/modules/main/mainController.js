@@ -30,6 +30,9 @@ export class MainController {
 
         let profileController = new ProfileController(profileModel, profileView);
 
+        let main = document.querySelector('#greeting');
+        document.remove(main);
+
         profileController.start();
     }
 }

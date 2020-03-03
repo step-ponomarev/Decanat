@@ -3,7 +3,7 @@
 export class MainView {
     constructor(element) {
         this.m_template =
-            `<div class="mx-auto"id="greeting' ">
+            `<div class="mx-auto"id="greeting">
                <h1 id="personalGreeting">Hello, guest(authorisation wasn't finished)</h1>
                This simple SPA application is created as course project of 'Object Oriented Programming in Java'     
             </div>`;
@@ -15,6 +15,7 @@ export class MainView {
     }
 
     render() {
+        this.m_element.innerHTML = '';
         this.removeListeners();
         this.m_element.insertAdjacentHTML('beforeend', this.m_template);
         this.addListeners();
