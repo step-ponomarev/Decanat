@@ -1,5 +1,5 @@
 "use strict";
-class MainController {
+export class ProfileController {
     constructor(model, view) {
         this.m_model = model;
         this.m_view = view;

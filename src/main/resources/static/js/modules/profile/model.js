@@ -1,6 +1,6 @@
 "use strict";
 
-class Model {
+export class Model {
     constructor(XMLHttpRequest) {
         this.m_xmlHttpRequest = XMLHttpRequest;
     }
