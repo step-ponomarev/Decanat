@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
   List<Person> findByFirstname(@Param("firstname") String firstname);
+  Person findTopByOrderByIdDesc();
 }

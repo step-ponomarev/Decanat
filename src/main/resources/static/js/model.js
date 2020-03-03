@@ -2,33 +2,35 @@
 
 class Model {
     constructor(XMLHttpRequest) {
-        this.xmlHttpRequest = XMLHttpRequest;
+        this.m_xmlHttpRequest = XMLHttpRequest;
     }
 
-    addPerson(person) {
+    addPerson(person, render) {
         let personJSON = JSON.stringify(person);
 
-        this.xmlHttpRequest.open('POST', '/people', true);
-        this.xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        this.m_xmlHttpRequest.open('POST', '/people');
+        this.m_xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-        this.xmlHttpRequest.send(personJSON);
+        this.m_xmlHttpRequest.onreadystatechange = () => {
+            if (this.m_xmlHttpRequest.readyState !== 4) return;
 
-        this.xmlHttpRequest.onload(() => {
-            const person = JSON.parse(this.xmlHttpRequest.responseText);
-            console.log(person.id);
-        });
+            const addedPerson = JSON.parse(this.m_xmlHttpRequest.responseText);
+            render(addedPerson);
+        };
+
+        this.m_xmlHttpRequest.send(personJSON);
     }
 
     getPersonList(render) {
-        this.xmlHttpRequest.open('GET', '/people', true);
+        this.m_xmlHttpRequest.open('GET', '/people', true);
 
-        this.xmlHttpRequest.send();
+        this.m_xmlHttpRequest.send();
 
-        this.xmlHttpRequest.onload = () => {
-            if (this.xmlHttpRequest.status !== 200) {
-                alert(this.xmlHttpRequest.status + ': ' + this.xmlHttpRequest.statusText);
+        this.m_xmlHttpRequest.onload = () => {
+            if (this.m_xmlHttpRequest.status !== 200) {
+                alert(this.m_xmlHttpRequest.status + ': ' + this.m_xmlHttpRequest.statusText);
             } else {
-                let people = JSON.parse(this.xmlHttpRequest.responseText);
+                let people = JSON.parse(this.m_xmlHttpRequest.responseText);
                 render(people);
             }
 

@@ -1,36 +1,44 @@
 "use strict";
-
 class MainController {
     constructor(model, view) {
-        this.model = model;
-        this.view = view;
+        this.m_model = model;
+        this.m_view = view;
 
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
 
-        this.view.personListViev.onchangeListener = this.onChange;
-        this.view.personFormView.onclickListener = this.onSubmit;
+        this.m_view.personListView.onchangeListener = (event) => {
+            this.onChange();
+            event.preventDefault();
+        };
+
+        this.m_view.personFormView.onclickListener = (event) => {
+            this.onSubmit();
+            event.preventDefault();
+        };
     }
 
     start() {
-        this.model.getPersonList(this.view.render);
+        this.m_model.getPersonList(this.m_view.render);
     }
 
-    onSubmit() {
-        alert('hi!');
-        /*let person = {
+    onSubmit(event) {
+        let person = {
             id: null,
-            firstname: element.querySelector("#firstname").value,
-            lastname: element.querySelector("#lastname").value,
-            pathername: element.querySelector("#pathername").value,
+            firstname: document.querySelector("#firstname").value,
+            lastname: document.querySelector("#lastname").value,
+            pathername: document.querySelector("#pathername").value,
             group: null,
             type: null
         };
 
-        this.model.addPerson(person);*/
+        this.m_model.addPerson(person, this.m_view.personListView.addPerson);
+
+        event.preventDefault();
     }
 
-    onChange() {
+    onChange(event) {
         console.log('changed');
+        event.preventDefault();
     }
 }

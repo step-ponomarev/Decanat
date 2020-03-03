@@ -1,139 +1,147 @@
 "use strict";
+
 class PersonFormView {
     constructor(element) {
-        this.template = '<form id="addPersonForm">' +
-            '<div class="input-group">' +
-            '   <div class="input-group-prepend">' +
-            '     <span class="input-group-text">First, last and pather name</span>' +
-            '  </div>' +
-            '  <input type="text" aria-label="First name" class="form-control mr-2 ml-2" id="firstname"' +
-            ' placeholder="First name">' +
-            '  <input type="text" aria-label="Last name" class="form-control" id="lastname" placeholder="Last name">' +
-            '  <input type="text" aria-label="Last name" class="form-control" id="pathername" placeholder="Pather name">' +
-            '  <button type="submit" class="btn btn-primary" id="addPersonButton">Add' +
-            ' person</button>' +
-            '</div>' +
-            '</form>';
+        this.m_template =
+            `<form id="addPersonForm">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">First, last and pather name</span>
+                    </div>
+                    <input type="text" aria-label="First name" class="form-control mr-2 ml-2" id="firstname" placeholder="First name">
+                    <input type="text" aria-label="Last name" class="form-control" id="lastname" placeholder="Last name">
+                    <input type="text" aria-label="Last name" class="form-control" id="pathername" placeholder="Pather name">
+                    <input type="submit", value="Add person" class="btn btn-primary" id="addPersonButton"/>
+                </div>
+            </form>`;
 
-        this._element = element;
-        this._onclickListener = null;
+        this.m_element = element;
+        this.m_onclickListener = null;
         this.render = this.render.bind(this);
     }
 
     render() {
-        this._removeEventListeners();
-        this._element.innerHTML += this.template;
-        this._addEventListeners();
+        this.m_element.innerHTML = ``;
+        this.removeEventListeners();
+
+        this.m_element.insertAdjacentHTML('beforeend', this.m_template);
+
+        this.addEventListeners();
     }
 
     set element(element) {
-        return this._element = element;
+        return this.m_element = element;
     }
 
     get element() {
-        return this._element;
+        return this.m_element;
     }
 
     set onclickListener(onclick) {
-        this._onclickListener = onclick;
+        this.m_onclickListener = onclick;
     }
 
     get onclickListener() {
-        return this._onclickListener;
+        return this.m_onclickListener;
     }
 
-    _addEventListeners() {
-        this._element.querySelector('#addPersonButton').addEventListener('submit', this._onclickListener, false); // Не
+    addEventListeners() {
+        let form = this.m_element.querySelector('#addPersonForm');
+
+        form.addEventListener('submit', this.m_onclickListener, false);
     }
 
-    _removeEventListeners() {
-        const button = this._element.querySelector('#addPersonButton');
-        if (button) {
-            button.removeEventListener('submit', this._onclickListener, false);
+    removeEventListeners() {
+        let elem = this.m_element.querySelector('#addPersonForm');
+
+        if (elem) {
+            elem.removeEventListener('submit', this.m_onclickListener, false);
         }
     }
 }
 
 class PersonListView {
     constructor(element) {
-        this.template = '<select id="personList"></select>';
-        this._element = element;
+        this.m_template = `<select id="personList"></select>`;
+        this.m_element = element;
 
-        this._onchangeListener = null;
+        this.m_onchangeListener = null;
+
         this.render = this.render.bind(this);
+        this.addPerson = this.addPerson.bind(this);
     }
 
     render(person) {
-        this._removeEventListeners();
+        this.m_element.innerHTML = ``;
 
-        if (this._element.querySelector('#personList')) {
-            this._element.querySelector('#personList').remove();
+        this.removeEventListeners();
+
+        if (this.m_element.querySelector('#personList')) {
+            this.m_element.querySelector('#personList').remove();
         }
-        this._element.innerHTML += this.template;
+        this.m_element.insertAdjacentHTML('beforeend', this.m_template);
 
-        this._updatePersonList(person);
-        this._addEventListener();
+        this.updatePersonList(person);
+        this.addEventListener();
     }
 
-    set onchangeListener(onchange) {
-        this._onchangeListener = onchange;
-    }
-
-    get onchangeListener() {
-        return this._onchangeListener;
-    }
-
-    set element(element) {
-        return this._element = element;
-    }
-
-    get element() {
-        return this._element;
-    }
-
-    _updatePersonList(people) {
-        this._element.querySelector('#personList').innerHTML = '';
+    updatePersonList(people) {
+        this.m_element.querySelector('#personList').innerHTML = '';
         people.forEach(person => {
-            this._addPerson(person);
+            this.addPerson(person);
         });
     }
 
-    _addPerson(person) {
+    addPerson(person) {
         const html = `<option value="${person.id || ''}">First name: ${person.firstname} Last name: ${person.lastname} Pather name: ${person.pathername} </option>`;
-        this._element.querySelector("#personList").innerHTML += html;
+        this.m_element.querySelector("#personList").insertAdjacentHTML('beforeend', html);
     }
 
-    _addEventListener() {
-        this._element.querySelector("#personList").addEventListener('change', function() { this._onchangeListener();}, false);
+    set onchangeListener(onchange) {
+        this.m_onchangeListener = onchange;
     }
 
-    _removeEventListeners() {
-        const select = this._element.querySelector("#personList");
+    addEventListener() {
+        this.m_element.querySelector("#personList").addEventListener('change', this.m_onchangeListener, false);
+    }
+
+    removeEventListeners() {
+        const select = this.m_element.querySelector("#personList");
         if (select) {
-            select.removeEventListener('change', function() { this._onchangeListener();}, false);
+            select.removeEventListener('change', this.m_onchangeListener, false);
         }
     }
 }
 
 class MainView {
     constructor(element) {
-        this._element = element;
-        this._personFormView = new PersonFormView(element);
-        this._personListViev = new PersonListView(element);
+        this.m_element = element;
+        this.m_personFormView = new PersonFormView(this.createChild('formDiv'));
+        this.m_personListViev = new PersonListView(this.createChild('personListDiv'));
         this.render = this.render.bind(this);
     }
 
     render(person) {
-        this._element.innerHTML = '';
-        this._personFormView.render();
-        this._personListViev.render(person);
+        this.m_personFormView.render();
+        this.m_personListViev.render(person);
     }
 
     get personFormView() {
-        return this._personFormView;
+        return this.m_personFormView;
     }
 
-    get personListViev() {
-        return this._personListViev;
+    get personListView() {
+        return this.m_personListViev;
+    }
+
+    createChild(name) {
+        let currentDiv = document.createElement('div');
+
+        currentDiv.id = name;
+
+        this.m_element.append(currentDiv);
+
+        return currentDiv;
+
     }
 }

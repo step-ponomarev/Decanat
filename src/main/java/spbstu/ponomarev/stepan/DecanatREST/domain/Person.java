@@ -21,4 +21,14 @@ public class Person {
 
   @Enumerated(EnumType.STRING)
   private Prof prof;
+
+  public Person() {
+
+  }
+
+  public Person(String firstname, String lastname, String pathername) {
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.pathername = pathername;
+  }
 }

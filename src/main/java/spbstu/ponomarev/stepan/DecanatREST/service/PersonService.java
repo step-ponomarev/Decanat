@@ -25,7 +25,9 @@ public class PersonService {
     return personRepository.findById(id).get();
   }
 
-  public void save(Person person) {
-    personRepository.save(person);
+  public Person save(Person person) {
+    return personRepository.save(person);
   }
+
+  public Person getLast() {return personRepository.findTopByOrderByIdDesc();}
 }

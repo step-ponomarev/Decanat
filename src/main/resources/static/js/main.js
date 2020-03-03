@@ -1,7 +1,6 @@
 "use strict";
-
 document.addEventListener("DOMContentLoaded", () => {
-    let element = document.getElementById("app");
+    let element = document.getElementById("application");
 
     let model = new Model(new XMLHttpRequest());
     let view = new MainView(element);
@@ -9,4 +8,4 @@ document.addEventListener("DOMContentLoaded", () => {
     let controller = new MainController(model, view);
 
     controller.start();
-}, false);
+});

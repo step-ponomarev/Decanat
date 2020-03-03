@@ -28,7 +28,9 @@ public class PersonController {
   }
 
   @PostMapping
-  public void addPerson(@RequestBody Person person) {
+  public Person addPerson(@RequestBody Person person) {
     personService.save(person);
+
+    return personService.getLast();
   }
 }
