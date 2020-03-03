@@ -35,13 +35,14 @@ export class PersonFormView {
         let form = this.m_element.querySelector('#addPersonForm');
 
         form.addEventListener('submit', this.m_onclickListener, false);
+
     }
 
     removeEventListeners() {
-        let elem = this.m_element.querySelector('#addPersonForm');
+        let form = this.m_element.querySelector('#addPersonForm');
 
-        if (elem) {
-            elem.removeEventListener('submit', this.m_onclickListener, false);
+        if (form) {
+            form.removeEventListener('submit', this.m_onclickListener, false);
         }
     }
 }

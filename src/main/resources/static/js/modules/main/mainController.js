@@ -31,7 +31,7 @@ export class MainController {
         let profileController = new ProfileController(profileModel, profileView);
 
         let main = document.querySelector('#greeting');
-        document.remove(main);
+        this.m_view.element.removeChild(main);
 
         profileController.start();
     }

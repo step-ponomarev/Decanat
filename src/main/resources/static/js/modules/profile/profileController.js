@@ -33,7 +33,6 @@ export class ProfileController {
         };
 
         this.m_model.addPerson(person, this.m_view.personListView.addPerson);
-
         event.preventDefault();
     }
 

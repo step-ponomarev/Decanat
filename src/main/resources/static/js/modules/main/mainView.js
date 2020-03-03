@@ -10,7 +10,7 @@ export class MainView {
 
         this.m_profileLink = null;
         this.m_element = element;
-        this.m_navbar = this.m_element.querySelector('#navBar');
+        this.m_navbar = document.querySelector('#navBar');
         this.render = this.render.bind(this);
     }
 
@@ -38,5 +38,9 @@ export class MainView {
 
     set profileLinkAction(action) {
         this.m_profileLink = action;
+    }
+
+    get element() {
+        return this.m_element;
     }
 }
