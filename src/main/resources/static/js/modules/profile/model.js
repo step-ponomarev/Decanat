@@ -1,41 +1,56 @@
 "use strict";
 
 export class Model {
-    constructor(XMLHttpRequest) {
-        this.m_xmlHttpRequest = XMLHttpRequest;
-    }
-
     addPerson(person, render) {
+        const xmlHttpRequest = new XMLHttpRequest();
         let personJSON = JSON.stringify(person);
 
-        this.m_xmlHttpRequest.open('POST', '/profile');
-        this.m_xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xmlHttpRequest.open('POST', '/profile');
+        xmlHttpRequest.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
-        this.m_xmlHttpRequest.onload = () => {
-            if (this.m_xmlHttpRequest.readyState !== 4) {
+        xmlHttpRequest.onload = () => {
+            if (xmlHttpRequest.readyState !== 4 || render == null) {
                 return;
             }
 
-            let addedPerson = JSON.parse(this.m_xmlHttpRequest.responseText);
+            let addedPerson = JSON.parse(xmlHttpRequest.responseText);
             render(addedPerson);
         };
 
-        this.m_xmlHttpRequest.send(personJSON);
+        xmlHttpRequest.send(personJSON);
     }
 
     getPersonList(render) {
-        this.m_xmlHttpRequest.open('GET', '/profile', true);
+        const xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.open('GET', '/profile', true);
 
-        this.m_xmlHttpRequest.send();
-
-        this.m_xmlHttpRequest.onload = () => {
-            if (this.m_xmlHttpRequest.status !== 200) {
-                alert(this.m_xmlHttpRequest.status + ': ' + this.m_xmlHttpRequest.statusText);
+        xmlHttpRequest.onload = () => {
+            if (xmlHttpRequest.status !== 200) {
+                alert(xmlHttpRequest.status + ': ' + xmlHttpRequest.statusText);
             } else {
-                let people = JSON.parse(this.m_xmlHttpRequest.responseText);
+                let people = JSON.parse(xmlHttpRequest.responseText);
                 render(people);
             }
 
-        }
+        };
+
+        xmlHttpRequest.send();
+    }
+
+    getSubjects(render) {
+        const xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.open('GET', '/profile/subjects', true);
+
+        xmlHttpRequest.onload = () => {
+            if (xmlHttpRequest.status !== 200) {
+                alert(xmlHttpRequest.status + ': ' + xmlHttpRequest.statusText);
+            } else {
+                let subjects = JSON.parse(xmlHttpRequest.responseText);
+                render(subjects);
+            }
+
+        };
+
+        xmlHttpRequest.send();
     }
 }

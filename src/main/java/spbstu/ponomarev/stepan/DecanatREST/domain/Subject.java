@@ -1,17 +1,27 @@
 package spbstu.ponomarev.stepan.DecanatREST.domain;
 
-import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
+import lombok.Getter;
 
-@Table(name = "subjects")
-@Entity
-@Data
-public class Subject {
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
-  @Length(max = 50, message = "Too long name")
-  private String name;
+public enum Subject {
+  MATH("Mathematics"),
+  PROGRAMMING("Programming"),
+  BIOLOGY("Biology"),
+  ENGLISH("English"),
+  AAA("AAA"),
+  KEK("KEK"),
+  LOL("LOL");
+
+
+  @Getter
+  public String name;
+
+  Subject(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }

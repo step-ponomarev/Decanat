@@ -16,7 +16,7 @@ public class Mark {
 
   @ManyToOne
   private Person student;
-  @ManyToOne
+  @Enumerated(EnumType.STRING)
   private Subject subject;
   @ManyToOne
   private Person teacher;

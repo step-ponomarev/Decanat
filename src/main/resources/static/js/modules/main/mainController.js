@@ -27,7 +27,7 @@ export class MainController {
     }
 
     openProfile() {
-        let profileModel = new Model(new XMLHttpRequest());
+        let profileModel = new Model();
         let profileView = new ProfileView(document.querySelector('#application'));
 
         let profileController = new ProfileController(profileModel, profileView);

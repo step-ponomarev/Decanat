@@ -3,8 +3,10 @@ package spbstu.ponomarev.stepan.DecanatREST.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import spbstu.ponomarev.stepan.DecanatREST.domain.Person;
+import spbstu.ponomarev.stepan.DecanatREST.domain.Subject;
 import spbstu.ponomarev.stepan.DecanatREST.service.PersonService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,6 +22,17 @@ public class MyProfileController {
   @GetMapping
   public List<Person> getAll() {
     return personService.getAll();
+  }
+
+  @GetMapping("subjects")
+  public List<String> getSubjects() {
+    List<String> list = new ArrayList<>(Subject.values().length);
+
+    for (var subject : Subject.values()) {
+      list.add(subject.getName());
+    }
+
+    return list;
   }
 
   @GetMapping("{id}")

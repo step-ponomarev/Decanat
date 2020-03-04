@@ -20,7 +20,7 @@ public class Person {
   private char type;
 
   @Enumerated(EnumType.STRING)
-  private Prof prof;
+  private Role role;
 
   public Person() {
 

@@ -1,6 +1,6 @@
 package spbstu.ponomarev.stepan.DecanatREST.domain;
 
-public enum Prof {
+public enum Role {
   STUDENT,
   TEACHER
 }

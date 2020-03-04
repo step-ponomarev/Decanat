@@ -2,7 +2,7 @@ export class ProfileGreeting {
     constructor(element) {
         this.m_template = `
          <div class="text-center">
-            <h1>Guest</h1>
+            <h3></h3>
         </div>`;
 
         this.m_element = element;
