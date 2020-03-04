@@ -1,0 +1,10 @@
+.subjCard-transitions {
+    bottom: 0;
+    cursor: pointer;
+    transition: 150ms linear;
+}
+
+.subjCard-transitions:hover {
+    bottom: 5px;
+    box-shadow: 2px 2px lightskyblue;
+}

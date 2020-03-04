@@ -1,21 +1,28 @@
 export class SubjectsView {
     constructor(element) {
         this.m_template = (subject) =>
-            `<div class="card border-primary mb-3" style="max-width: 18rem;" name="subjCard" if="${subject.toLowerCase()}">
+            `<div class="card border-primary mb-3 subjCard-transitions mt-3" style="max-width: 18rem;" name="subjCard" id="${subject.toLowerCase()}">
                 <div class="card-header">${subject}</div>
                 <div class="card-body text-primary">
                     <h5 class="card-title">Amosov A.V.</h5>
                     <p class="card-text">
                         Some quick example text to build on the card title and make up the bulk of the card's content.
                     </p>
-                </div>`;
+                </div>
+            </div>`;
 
         this.m_element = element;
         this.m_element.classList.add('card-columns');
-        this.m_mouseAction = event => {
-                console.log(event.target.id);
+
+        this.m_mouseChoose = event => {
+                event.target.classList.remove('border-primary');
+                event.target.classList.add('border-info');
+
             };
-        //this.m_element.style = 'width: 25;';
+        this.m_mouseLeave = event => {
+            event.target.classList.remove('border-info');
+            event.target.classList.add('border-primary');
+        };
 
         this.render = this.render.bind(this);
     }
@@ -24,10 +31,6 @@ export class SubjectsView {
         this.removeActionListeners();
         this.createCards(subjects);
         this.addActionListeners();
-    }
-
-    set mouseAction(action) {
-        this.m_mouseAction = action;
     }
 
     createCards(subjects) {
@@ -40,7 +43,8 @@ export class SubjectsView {
         let cards = document.getElementsByName("subjCard");
 
         cards.forEach(card => {
-           card.addEventListener('mouseenter', this.m_mouseAction)
+           card.addEventListener('mouseenter', this.m_mouseChoose);
+            card.addEventListener('mouseleave', this.m_mouseLeave);
         });
     }
 
@@ -52,7 +56,8 @@ export class SubjectsView {
         }
 
         cards.forEach(card => {
-            card.removeEventListener('mouseenter', this.m_mouseAction)
+            card.removeEventListener('mouseenter', this.m_mouseChoose);
+            card.addEventListener('mouseleave', this.m_mouseLeave);
         });
     }
 }
