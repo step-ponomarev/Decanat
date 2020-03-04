@@ -17,7 +17,6 @@ export class SubjectsView {
         this.m_mouseChoose = event => {
                 event.target.classList.remove('border-primary');
                 event.target.classList.add('border-info');
-
             };
         this.m_mouseLeave = event => {
             event.target.classList.remove('border-info');
