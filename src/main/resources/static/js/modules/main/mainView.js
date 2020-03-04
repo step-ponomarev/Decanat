@@ -3,15 +3,19 @@
 export class MainView {
     constructor(element) {
         this.m_template =
-            `<div class="mx-auto"id="greeting">
+            `<div class="mx-auto text-center" id="greeting">
                <h1 id="personalGreeting">Hello, guest(authorisation wasn't finished)</h1>
-               This simple SPA application is created as course project of 'Object Oriented Programming in Java'     
+               This simple SPA application is created as course project of 'Object Oriented Programming in Java'
+               <img src="pic/stepan.png" class="rounded float-right" alt="Author" height="400" width="200">
             </div>`;
 
         this.m_profileLink = null;
         this.m_element = element;
         this.m_navbar = document.querySelector('#navBar');
+
         this.render = this.render.bind(this);
+        this.removeListeners = this.removeListeners.bind(this);
+        this.addListeners = this.addListeners.bind(this);
     }
 
     render() {

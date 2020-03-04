@@ -1,4 +1,5 @@
 "use strict";
+
 export class ProfileController {
     constructor(model, view) {
         this.m_model = model;
@@ -13,7 +14,7 @@ export class ProfileController {
         };
 
         this.m_view.personFormView.onclickListener = (event) => {
-            this.onSubmit();
+            this.onSubmit(event);
             event.preventDefault();
         };
     }
@@ -23,21 +24,23 @@ export class ProfileController {
     }
 
     onSubmit(event) {
+        const form = event.target;
+
         let person = {
             id: null,
-            firstname: document.querySelector("#firstname").value,
-            lastname: document.querySelector("#lastname").value,
-            pathername: document.querySelector("#pathername").value,
+            firstname: form.querySelector("#firstname").value,
+            lastname: form.querySelector("#lastname").value,
+            pathername: form.querySelector("#pathername").value,
             group: null,
             type: null
         };
 
+        form.reset();
+
         this.m_model.addPerson(person, this.m_view.personListView.addPerson);
-        event.preventDefault();
     }
 
-    onChange(event) {
+    onChange() {
         console.log('changed');
-        event.preventDefault();
     }
 }

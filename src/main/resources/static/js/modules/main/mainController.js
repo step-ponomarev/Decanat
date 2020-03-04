@@ -14,6 +14,8 @@ export class MainController {
             this.openProfile();
 
             event.preventDefault();
+
+            this.m_view.removeListeners();
         };
 
         this.m_model = model;
@@ -35,5 +37,6 @@ export class MainController {
 
         profileController.start();
     }
+
 }
 

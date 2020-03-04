@@ -10,12 +10,13 @@
     <script type="module" src="js/modules/profile/profileController.js"></script>
     <script type="module" src="js/modules/profile/personFormView.js"></script>
     <script type="module" src="js/modules/profile/personListView.js"></script>
+    <script type="module" src="js/modules/profile/profileGreeting.js"></script>
 
     <script type="module" src="js/modules/main/mainController.js"></script>
     <script type="module" src="js/modules/main/mainView.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navBar">
+<nav class="navbar navbar-dark py-0 bg-primary navbar-expand-lg py-md-0" id="navBar">
     <a class="navbar-brand" href="#">Decanat</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +28,14 @@
                 <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="" id="profileLink">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Login</a>
+                <a class="nav-link" id="profileLink">Profile</a>
             </li>
         </ul>
+    </div>
+    <div class="navbar-text mr-2">
+        <a class="nav-link row" href="#" tabindex="-1" aria-disabled="true">
+            <input value="Login" class="btn btn-primary ml-3" type="button" name="authButton" id="authButton"/>
+        </a>
     </div>
 </nav>
 <div id="application"></div>

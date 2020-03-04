@@ -8,12 +8,12 @@ import spbstu.ponomarev.stepan.DecanatREST.service.PersonService;
 import java.util.List;
 
 @RestController
-@RequestMapping("people")
-public class PersonController {
+@RequestMapping("profile")
+public class MyProfileController {
   private final PersonService personService;
 
   @Autowired
-  public PersonController(PersonService personService) {
+  public MyProfileController(PersonService personService) {
     this.personService = personService;
   }
 
