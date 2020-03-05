@@ -1,8 +1,8 @@
 export class SubjectsView {
     constructor(element) {
         this.m_template = (subject) =>
-            `<div class="card border-primary mb-3 subjCard-transitions mt-3" style="max-width: 18rem;" name="subjCard" id="${subject.toLowerCase()}">
-                <div class="card-header">${subject}</div>
+            `<div class="card border-primary mb-3 subjCard-transitions mt-3" style="max-width: 18rem;" name="subjCard" id="${subject.name.toLowerCase()}">
+                <div class="card-header">${subject.name}</div>
                 <div class="card-body text-primary">
                     <h5 class="card-title">Amosov A.V.</h5>
                     <p class="card-text">

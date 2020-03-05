@@ -1,8 +1,10 @@
 package spbstu.ponomarev.stepan.DecanatREST.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Subject {
   MATH("Mathematics"),
   PROGRAMMING("Programming"),
@@ -11,7 +13,6 @@ public enum Subject {
   AAA("AAA"),
   KEK("KEK"),
   LOL("LOL");
-
 
   @Getter
   public String name;

@@ -7,6 +7,7 @@ import spbstu.ponomarev.stepan.DecanatREST.domain.Subject;
 import spbstu.ponomarev.stepan.DecanatREST.service.PersonService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -25,14 +26,8 @@ public class MyProfileController {
   }
 
   @GetMapping("subjects")
-  public List<String> getSubjects() {
-    List<String> list = new ArrayList<>(Subject.values().length);
-
-    for (var subject : Subject.values()) {
-      list.add(subject.getName());
-    }
-
-    return list;
+  public List<Subject> getSubjects() {
+    return Arrays.asList(Subject.values());
   }
 
   @GetMapping("{id}")
