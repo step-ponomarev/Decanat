@@ -15,14 +15,14 @@ public enum Subject {
   LOL("LOL");
 
   @Getter
-  public String name;
+  public String called;
 
-  Subject(String name) {
-    this.name = name;
+  Subject(String called) {
+    this.called = called;
   }
 
   @Override
   public String toString() {
-    return name;
+    return called;
   }
 }

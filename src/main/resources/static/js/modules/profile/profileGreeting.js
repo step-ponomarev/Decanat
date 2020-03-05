@@ -1,3 +1,5 @@
+"use strict";
+
 export class ProfileGreeting {
     constructor(element) {
         this.m_template = `

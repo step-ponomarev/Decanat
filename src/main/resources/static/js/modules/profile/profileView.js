@@ -20,6 +20,13 @@ export class ProfileView {
         this.m_personFormView.render();
     }
 
+    clear() {
+        this.m_profileSubjects.removeActionListeners();
+        this.m_personFormView.removeEventListeners();
+
+        this.m_element.innerHTML = '';
+    }
+
     renderSubjects(subjects) {
         this.m_profileSubjects.render(subjects)
     }
@@ -28,8 +35,8 @@ export class ProfileView {
         return this.m_personFormView;
     }
 
-    get personListView() {
-        return this.m_personListViev;
+    get subjectsView() {
+        return this.m_profileSubjects;
     }
 
     createChild(name) {

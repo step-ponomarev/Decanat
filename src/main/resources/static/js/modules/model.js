@@ -1,6 +1,6 @@
 "use strict";
 
-import {Http} from '../http.js';
+import {Http} from './http.js';
 
 export class Model {
     getPersonList(render) {

@@ -1,6 +1,5 @@
 'use strict';
 
-import {Model} from '../profile/model.js';
 import {ProfileView} from '../profile/profileView.js';
 import {ProfileController} from '../profile/profileController.js';
 
@@ -27,10 +26,9 @@ export class MainController {
     }
 
     openProfile() {
-        let profileModel = new Model();
         let profileView = new ProfileView(document.querySelector('#application'));
 
-        let profileController = new ProfileController(profileModel, profileView);
+        let profileController = new ProfileController(this.m_model, profileView);
 
         let main = document.querySelector('#greeting');
         this.m_view.element.removeChild(main);

@@ -1,4 +1,4 @@
-export class PersonListView {
+export class PersonTableView {
     constructor(element) {
         this.m_template = `<select id="personList"></select>`;
         this.m_element = element;

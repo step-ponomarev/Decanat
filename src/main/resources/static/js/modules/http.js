@@ -1,3 +1,5 @@
+"use strict";
+
 export class Http {
     static get(url, render) {
         const xmlHttpRequest = new XMLHttpRequest();
