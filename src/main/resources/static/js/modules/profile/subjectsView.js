@@ -49,7 +49,7 @@ export class SubjectsView {
 
     removeActionListeners() {
         let cards = document.getElementsByName("subjCard");
-//TODO Пофиксить
+
         if (cards.length === 0) {
             return;
         }
