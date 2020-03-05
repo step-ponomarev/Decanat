@@ -18,11 +18,11 @@ public class PersonService {
   }
 
   public List<Person> getAll() {
-    return (List<Person>) personRepository.findAll();
+    return personRepository.findAll();
   }
 
   public Person getById(Long id) {
-    return personRepository.findById(id).get();
+    return personRepository.getOne(id);
   }
 
   public Person save(Person person) {

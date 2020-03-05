@@ -4,20 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import spbstu.ponomarev.stepan.DecanatREST.domain.Person;
 import spbstu.ponomarev.stepan.DecanatREST.domain.Subject;
+import spbstu.ponomarev.stepan.DecanatREST.repository.SubjectRepository;
 import spbstu.ponomarev.stepan.DecanatREST.service.PersonService;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
 @RequestMapping("profile")
 public class MyProfileController {
   private final PersonService personService;
+  private final SubjectRepository subjectRepository;
 
   @Autowired
-  public MyProfileController(PersonService personService) {
+  public MyProfileController(PersonService personService, SubjectRepository subjectRepository) {
     this.personService = personService;
+    this.subjectRepository = subjectRepository;
   }
 
   @GetMapping
@@ -27,7 +28,8 @@ public class MyProfileController {
 
   @GetMapping("subjects")
   public List<Subject> getSubjects() {
-    return Arrays.asList(Subject.values());
+
+    return subjectRepository.findAll();
   }
 
   @GetMapping("{id}")
