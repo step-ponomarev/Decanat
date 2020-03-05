@@ -6,7 +6,9 @@ export class MainView {
             `<div class="mx-auto text-center" id="greeting">
                <h1 id="personalGreeting">Hello, guest(authorisation wasn't finished)</h1>
                This simple SPA application is created as course project of 'Object Oriented Programming in Java'
-               <img src="pic/stepan.png" class="rounded float-right" alt="Author" height="400" width="200">
+               <div>
+                    <img src="pic/war.jpeg" class="" alt="Author" height="600" width="600">
+               </div>
             </div>`;
 
         this.m_profileLink = null;
