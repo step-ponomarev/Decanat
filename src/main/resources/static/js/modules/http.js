@@ -3,14 +3,14 @@
 export class Http {
     static get(url, render) {
         const xmlHttpRequest = new XMLHttpRequest();
-        xmlHttpRequest.open('GET', url, true);
+        xmlHttpRequest.open('GET', url);
 
         xmlHttpRequest.onload = () => {
             if (xmlHttpRequest.status !== 200) {
                 alert(xmlHttpRequest.status + ': ' + xmlHttpRequest.statusText);
             } else {
-                let people = JSON.parse(xmlHttpRequest.responseText);
-                render(people);
+                let obj = JSON.parse(xmlHttpRequest.responseText);
+                render(obj);
             }
 
         };

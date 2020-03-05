@@ -9,8 +9,8 @@ export class SubjectController {
         this.m_view = view;
     }
 
-    start() {
-        this.m_view.render();
+    start(id) {
+        this.m_model.getMarks(id, this.m_view.render);
         this.addActions();
     }
 

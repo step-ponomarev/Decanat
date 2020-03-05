@@ -1,6 +1,5 @@
 "use strict";
 
-import {PersonFormView} from './personFormView.js';
 import {ProfileGreeting} from "./profileGreeting.js";
 import {SubjectsView} from "./subjectsView.js";
 
@@ -8,31 +7,24 @@ export class ProfileView {
     constructor(element) {
         this.m_element = element;
         this.m_profileGreeting = new ProfileGreeting(this.createChild('greeting'));
-        this.m_personFormView = new PersonFormView(this.createChild('formDiv'));
         this.m_profileSubjects = new SubjectsView(this.createChild('subjects'));
 
         this.render = this.render.bind(this);
         this.renderSubjects = this.renderSubjects.bind(this);
     }
 
-    render(person) {
+    render() {
         this.m_profileGreeting.render();
-        this.m_personFormView.render();
     }
 
     clear() {
         this.m_profileSubjects.removeActionListeners();
-        this.m_personFormView.removeEventListeners();
 
         this.m_element.innerHTML = '';
     }
 
     renderSubjects(subjects) {
         this.m_profileSubjects.render(subjects)
-    }
-
-    get personFormView() {
-        return this.m_personFormView;
     }
 
     get subjectsView() {

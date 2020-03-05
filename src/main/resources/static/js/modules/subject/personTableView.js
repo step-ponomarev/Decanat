@@ -1,52 +1,45 @@
+"use strict";
+
 export class PersonTableView {
     constructor(element) {
-        this.m_template = `<select id="personList"></select>`;
+        this.m_template = `
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Pathername</th>
+                    <th scope="col">Mark</th>
+                </tr>
+            </thead>
+        <tbody id="markTableBody">
+        </tbody>
+        </table>`;
+
+        this.m_tableElement = (mark) =>
+            `<tr>
+                <td>${mark.student.firstname}</td>
+                <td>${mark.student.lastname}</td>
+                 <td>${mark.student.pathername}</td>
+                <td>${mark.value}</td>
+            </tr>`;
         this.m_element = element;
 
         this.m_onchangeListener = null;
 
         this.render = this.render.bind(this);
-        this.addPerson = this.addPerson.bind(this);
     }
 
-    render(person) {
-        this.m_element.innerHTML = ``;
-
-        this.removeEventListeners();
-
-        if (this.m_element.querySelector('#personList')) {
-            this.m_element.querySelector('#personList').remove();
-        }
+    render(marks) {
         this.m_element.insertAdjacentHTML('beforeend', this.m_template);
-
-        this.updatePersonList(person);
-        this.addEventListener();
+        this.fillTable(marks)
     }
 
-    updatePersonList(people) {
-        this.m_element.querySelector('#personList').innerHTML = '';
-        people.forEach(person => {
-            this.addPerson(person);
+    fillTable(marks) {
+        let table = this.m_element.querySelector("#markTableBody");
+        marks.forEach(mark => {
+            table.insertAdjacentHTML('beforeend', this.m_tableElement(mark))
         });
     }
 
-    addPerson(person) {
-        const html = `<option value="${person.id || ''}">First name: ${person.firstname} Last name: ${person.lastname} Pather name: ${person.pathername} </option>`;
-        this.m_element.querySelector("#personList").insertAdjacentHTML('beforeend', html);
-    }
-
-    set onchangeListener(onchange) {
-        this.m_onchangeListener = onchange;
-    }
-
-    addEventListener() {
-        this.m_element.querySelector("#personList").addEventListener('change', this.m_onchangeListener, false);
-    }
-
-    removeEventListeners() {
-        const select = this.m_element.querySelector("#personList");
-        if (select) {
-            select.removeEventListener('change', this.m_onchangeListener, false);
-        }
-    }
 }

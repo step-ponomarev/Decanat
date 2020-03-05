@@ -5,14 +5,14 @@ export class SubjectView {
     constructor(element) {
         this.m_element = element;
         this.m_sortForm = new SortFormView(this.createChild('sortPersonForm'));
-        //this.m_personTable = new PersonTableView(this.createChild('personTable'));
+        this.m_personTable = new PersonTableView(this.createChild('personTable'));
 
         this.render = this.render.bind(this);
     }
 
-    render(people) {
-        this.m_sortForm.render(people);
-       // this.m_personTable.render(null);
+    render(marks) {
+        this.m_sortForm.render();
+        this.m_personTable.render(marks);
     }
 
     createChild(name) {

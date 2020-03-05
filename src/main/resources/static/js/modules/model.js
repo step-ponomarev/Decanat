@@ -14,4 +14,8 @@ export class Model {
     addPerson(person, render) {
         Http.post('/profile', person, render)
     }
+
+    getMarks(id, render) {
+        Http.get(`/subject/marks/${id}`, render);
+    }
 }
