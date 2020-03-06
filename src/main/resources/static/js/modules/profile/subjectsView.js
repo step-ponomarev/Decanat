@@ -1,72 +1,43 @@
+"use strict";
+
+import {SubjectsGreeting} from "./subjectsGreeting.js";
+import {SubjectsListView} from "./subjectsListView.js";
+
 export class SubjectsView {
     constructor(element) {
-        this.m_template = (subject) =>
-            `<div class="card border-primary mb-3 subjCard-transitions mt-3" style="max-width: 18rem;" name="subjCard" id="${subject.id}">
-                <div class="card-header">${subject.name}</div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Amosov A.V.</h5>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    </p>
-                </div>
-            </div>`;
-
         this.m_element = element;
-        this.m_element.classList.add('card-columns');
-
-        this.m_mouseChoose = event => {
-                event.target.classList.remove('border-primary');
-                event.target.classList.add('border-info');
-            };
-        this.m_mouseLeave = event => {
-            event.target.classList.remove('border-info');
-            event.target.classList.add('border-primary');
-        };
-
-        this.m_click = null;
+        this.m_profileGreeting = new SubjectsGreeting(this.createChild('greeting'));
+        this.m_profileSubjects = new SubjectsListView(this.createChild('subjects'));
 
         this.render = this.render.bind(this);
+        this.renderSubjects = this.renderSubjects.bind(this);
     }
 
-    render(subjects) {
-        this.removeActionListeners();
-        this.createCards(subjects);
-        this.addActionListeners();
+    render() {
+        this.m_profileGreeting.render();
     }
 
-    createCards(subjects) {
-        subjects.forEach((subject) => {
-            this.m_element.insertAdjacentHTML('beforeend', this.m_template(subject));
-        });
+    clear() {
+        this.m_profileSubjects.removeActionListeners();
+
+        this.m_element.innerHTML = '';
     }
 
-    set click(action) {
-        this.m_click = action;
+    renderSubjects(subjects) {
+        this.m_profileSubjects.render(subjects)
     }
 
-    addActionListeners() {
-        let cards = document.getElementsByName("subjCard");
-
-        cards.forEach(card => {
-           card.addEventListener('mouseenter', this.m_mouseChoose);
-           card.addEventListener('mouseleave', this.m_mouseLeave);
-           card.addEventListener('click', this.m_click);
-        });
+    get subjectsView() {
+        return this.m_profileSubjects;
     }
 
-    removeActionListeners() {
-        let cards = document.getElementsByName("subjCard");
+    createChild(name) {
+        let currentDiv = document.createElement('div');
 
-        if (cards.length === 0) {
-            return;
-        }
+        currentDiv.id = name;
 
-        
+        this.m_element.append(currentDiv);
 
-        cards.forEach(card => {
-            card.removeEventListener('mouseenter', this.m_mouseChoose);
-            card.removeEventListener('mouseleave', this.m_mouseLeave);
-            card.removeEventListener('click', this.m_click);
-        });
+        return currentDiv;
     }
 }

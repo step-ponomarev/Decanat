@@ -1,6 +1,6 @@
 "use strict";
 
-export class ProfileGreeting {
+export class SubjectsGreeting {
     constructor(element) {
         this.m_template = `
          <div class="text-center">

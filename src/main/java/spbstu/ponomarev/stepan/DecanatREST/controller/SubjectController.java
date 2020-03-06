@@ -1,37 +1,30 @@
 package spbstu.ponomarev.stepan.DecanatREST.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import spbstu.ponomarev.stepan.DecanatREST.domain.Mark;
-import spbstu.ponomarev.stepan.DecanatREST.service.MarkService;
+import spbstu.ponomarev.stepan.DecanatREST.domain.Subject;
+import spbstu.ponomarev.stepan.DecanatREST.service.SubjectService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("subject")
 public class SubjectController {
-  private final MarkService markService;
+  private final SubjectService subjectService;
 
-  @Autowired
-  public SubjectController(MarkService markService) {
-    this.markService = markService;
+  public SubjectController(SubjectService subjectService) {
+    this.subjectService = subjectService;
   }
 
-  @GetMapping("marks")
-  public List<Mark> getMarks() {
-    return markService.getAll();
+  @GetMapping("all")
+  public List<Subject> getSubjects() {
+
+    return subjectService.getAll();
   }
 
-  @GetMapping("marks/{id}")
-  public List<Mark> getById(
+  @GetMapping("{id}")
+  public Subject getSubject(
       @PathVariable Long id
   ) {
-    return markService.getBySubjectId(id);
-  }
-
-  @PostMapping("marks")
-  public List<Mark> getBySubject(@RequestBody String subject) {
-
-    return null;
+    return subjectService.getOne(id);
   }
 }

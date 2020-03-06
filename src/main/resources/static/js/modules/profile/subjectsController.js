@@ -3,7 +3,7 @@
 import {SubjectController} from "../subject/subjectController.js";
 import {SubjectView} from "../subject/subjectView.js";
 
-export class ProfileController {
+export class SubjectsController {
     constructor(model, view) {
         this.m_model = model;
         this.m_view = view;
@@ -21,14 +21,14 @@ export class ProfileController {
     }
 
     selectSubject(event) {
-        let subjectId = event.target.parentElement;
+        let subjectId = event.target.id;
 
         this.m_view.clear();
 
         let subjectsView = new SubjectView(this.m_view.m_element);
         let subjectController = new SubjectController(this.m_model, subjectsView);
 
-        subjectController.start(subjectId.id);
+        this.m_model.getSubject(subjectId, subjectController.start);
     }
 
     //TODO Переместить в решистрацию

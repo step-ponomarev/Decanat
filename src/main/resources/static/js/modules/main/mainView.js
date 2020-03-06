@@ -29,13 +29,13 @@ export class MainView {
     }
 
     addListeners() {
-        let profileButton = this.m_navbar.querySelector('#profileLink');
+        let profileButton = this.m_navbar.querySelector('#subjectsLink');
 
         profileButton.addEventListener('click', this.m_profileLink, false);
     }
 
     removeListeners() {
-        let profileButton = this.m_navbar.querySelector('#profileLink');
+        let profileButton = this.m_navbar.querySelector('#subjectsLink');
 
         if (profileButton) {
             profileButton.removeEventListener('click', this.m_profileLink, false);
