@@ -1,3 +1,5 @@
+"use strict";
+
 export class SubjectsListView {
     constructor(element) {
         this.m_template = (subject) =>

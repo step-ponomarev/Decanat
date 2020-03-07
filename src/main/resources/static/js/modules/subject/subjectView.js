@@ -1,3 +1,5 @@
+"use strict";
+
 import {PersonTableView} from "./personTableView.js";
 import {SortFormView} from "./sortFormView.js";
 

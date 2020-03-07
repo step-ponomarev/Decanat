@@ -1,3 +1,5 @@
+"use strict";
+
 export class PersonFormView {
     constructor(element) {
         this.m_template =
