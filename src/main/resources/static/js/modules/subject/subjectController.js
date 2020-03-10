@@ -9,36 +9,32 @@ export class SubjectController {
         this.m_model = model;
         this.m_view = view;
 
-        this.m_marks = null;
-
         this.m_view.sortForm.onchange = (event) => {
-            const id = this.m_view.personTable.getElementsByTagName('tr')[0].id;
-
-            this.m_model.getMarks(id, this.getMarks);
+            let marks = this.m_model.currentMarks;
 
             const select = event.target;
 
             const sortMode = select.options[select.selectedIndex].value;
 
             if (sortMode === 'highLow') {
-                this.m_marks.sort((a, b) => {
-                    if (a > b) {
+                marks.sort((a, b) => {
+                    if (a.value < b.value) {
                         return 1;
                     }
 
-                    if (a < b) {
+                    if (a.value > b.value) {
                         return -1;
                     }
 
                     return 0;
                 });
             } else if (sortMode === 'lowHigh') {
-                this.m_marks.sort((a, b) => {
-                    if (a > b) {
+                marks.sort((a, b) => {
+                    if (a.value > b.value) {
                         return 1;
                     }
 
-                    if (a < b) {
+                    if (a.value < b.value) {
                         return -1;
                     }
 
@@ -46,7 +42,8 @@ export class SubjectController {
                 });
             }
 
-            this.m_view.render(this.m_marks);
+            this.m_view.personTable.element.innerHTML = '';
+            this.m_view.personTable.render(marks);
         };
 
         this.start = this.start.bind(this);
@@ -86,5 +83,9 @@ export class SubjectController {
 
     getMarks(marks) {
         this.m_marks = marks;
+    }
+
+    set markId(id) {
+        this.m_markId = id;
     }
 }

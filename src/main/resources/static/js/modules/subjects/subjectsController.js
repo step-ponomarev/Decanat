@@ -29,6 +29,7 @@ export class SubjectsController {
         let subjectsView = new SubjectView(this.m_view.m_element);
         let subjectController = new SubjectController(new SubjectModel(), subjectsView);
 
+        subjectController.markId = subjectId;
         this.m_model.getSubject(subjectId, subjectController.start);
     }
 
