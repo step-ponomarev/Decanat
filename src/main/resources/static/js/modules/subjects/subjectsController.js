@@ -2,6 +2,7 @@
 
 import {SubjectController} from "../subject/subjectController.js";
 import {SubjectView} from "../subject/subjectView.js";
+import {SubjectModel} from "../subject/subjectModel.js";
 
 export class SubjectsController {
     constructor(model, view) {
@@ -26,7 +27,7 @@ export class SubjectsController {
         this.m_view.clear();
 
         let subjectsView = new SubjectView(this.m_view.m_element);
-        let subjectController = new SubjectController(this.m_model, subjectsView);
+        let subjectController = new SubjectController(new SubjectModel(), subjectsView);
 
         this.m_model.getSubject(subjectId, subjectController.start);
     }

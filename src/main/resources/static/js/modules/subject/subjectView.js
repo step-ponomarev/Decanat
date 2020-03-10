@@ -36,6 +36,14 @@ export class SubjectView {
         this.m_greeting = greeting;
     }
 
+    get sortForm() {
+        return this.m_sortForm;
+    }
+
+    get personTable() {
+        return this.m_personTable;
+    }
+
     createChild(name) {
         let currentDiv = document.createElement('div');
 

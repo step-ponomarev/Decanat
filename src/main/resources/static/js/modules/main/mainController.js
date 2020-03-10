@@ -1,8 +1,9 @@
 'use strict';
 
-import {SubjectsView} from '../profile/subjectsView.js';
-import {SubjectsController} from '../profile/subjectsController.js';
+import {SubjectsView} from '../subjects/subjectsView.js';
+import {SubjectsController} from '../subjects/subjectsController.js';
 import {navController} from "../../main.js";
+import {SubjectsModel} from "../subjects/subjectsModel.js";
 
 export class MainController {
     constructor(model, view) {
@@ -31,7 +32,7 @@ export class MainController {
 
         navController.choose('subjectsLink');
 
-        let profileController = new SubjectsController(this.m_model, profileView);
+        let profileController = new SubjectsController(new SubjectsModel(), profileView);
 
         let main = document.querySelector('#greeting');
         this.m_view.element.removeChild(main);

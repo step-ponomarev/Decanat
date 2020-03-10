@@ -17,12 +17,13 @@ export class PersonTableView {
         </table>`;
 
         this.m_tableElement = (mark) =>
-            `<tr>
+            `<tr'>
                 <td>${mark.student.firstname}</td>
                 <td>${mark.student.lastname}</td>
                  <td>${mark.student.pathername}</td>
                 <td>${mark.value}</td>
-            </tr>`;
+            </tr>
+                <h`;
         this.m_element = element;
 
         this.m_onchangeListener = null;
