@@ -1,0 +1,77 @@
+.project {
+  display: grid;
+  justify-items: center;
+  grid-row-gap: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.project > .project__title {
+}
+
+.project > .project__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.project__content > .project__text {
+  display: grid;
+  justify-items: left;
+  font-size: 18px;
+}
+
+.text__title {
+  color: #2d3748;
+  height: min-content;
+  width: min-content;
+  font-size: 30px;
+}
+
+.project__tz {
+  display: grid;
+  justify-items: left;
+
+  margin-left: 3em;
+}
+.project__tz > p {
+  margin-top: 0em;
+  font-style: italic;
+  height: min-content;
+}
+
+.project__text > .project__task {
+}
+.project__task > p {
+  margin-left: 1em;
+}
+
+.project > .technology {
+  display: grid;
+}
+
+.technology > .technologyList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.technologyList > a {
+  border-left: 1px dotted #17dee8;;
+  padding-left: 1em;
+}
+
+.project > .project__databaseImg {
+  display: grid;
+  justify-items: center;
+}
+
+.project__databaseImg > .project__subtitle {
+  text-align: center;
+  font-size: 16px;
+}
+
+.project__databaseImg > img {
+  width: 600px;
+  height: 600px;
+}

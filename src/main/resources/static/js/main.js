@@ -1,23 +1,12 @@
-"use strict";
-import {MainView} from './modules/main/mainView.js';
-import {MainController} from './modules/main/mainController.js';
-import {NavController} from "./modules/nav/navController.js";
+'use strict';
 
-export const navController = new NavController();
+import {Http} from './http.js';
+import {App} from './app/app.js';
+
+export const http = new Http();
 
 document.addEventListener("DOMContentLoaded", () => {
+    const app = new App();
 
-    navController.start();
-
-    let element = document.getElementById("application");
-
-    // TODO MainModel
-
-    let view = new MainView(element);
-
-
-    let controller = new MainController(null, view);
-
-    controller.start();
+    app.start();
 });
-

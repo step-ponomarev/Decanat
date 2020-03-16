@@ -1,0 +1,4 @@
+.app {
+    display: grid;
+    grid-row-gap: 4em;
+}

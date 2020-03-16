@@ -1,0 +1,121 @@
+.team {
+    display: grid;
+    grid-row-gap: 5em;
+    justify-items: center;
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: 18px;
+}
+
+.team > .team__title {
+    
+}
+
+.task__left {
+    text-align: left;
+}
+
+.task__right {
+    text-align: right;
+}
+
+.team > .team__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-column-gap: 1em;
+    justify-items: center;
+}
+
+.teammate {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    grid-row-gap: 1em;
+    border-radius: 15%;
+    box-shadow: 0px 0px 5px #17dee8;
+    background-color: white;
+}
+
+.teammate > .teammate__title {
+    margin-left: 1em;
+    margin-right: 1em;
+    justify-self: left;
+    height: min-content;
+    font-size: 36px;
+    color:  #1a202c;
+}
+
+.teammate > .teammate__content {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    justify-items: center;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.teammate__content > .teammate__img {
+    height: max-content;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.teammate__img > img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.teammate__img > .teammate__subtitle {
+    padding-left: 5em;
+    font-size: 16px;
+    text-decoration: underline;
+    text-decoration-color: lightgray;
+    height: min-content;
+    color: grey;
+}
+
+.teammate__content > .teammate__contacts {
+    display: grid;
+    grid-row-gap: 1em;
+    justify-items: start;
+    height: min-content;
+    padding-left: 0.5em;
+}
+
+.teammate__contacts > a {
+    height: min-content;
+    width: min-content;
+    text-align: left;
+    font-size: 16x;
+    color: black;
+    padding-left: 0.4em;
+    border-left: 1px solid lightpink;
+}
+
+.teammate__contacts > a:hover {
+    cursor: pointer;
+    width: 100%;
+    transition: 300ms linear;
+    transform: translateX(-1em);
+    background: linear-gradient(90deg,rgb(255, 182, 193, 0.2), white);
+}
+
+.team__content > .team__decorator {
+    margin-top: 5em;
+    display: grid;
+    width: 100%;
+}
+
+.team__decorator > .decorator__task {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.teammate__contacts > .unobtainable {
+    
+}
+
+.teammate__contacts > .unobtainable:hover { 
+}

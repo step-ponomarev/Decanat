@@ -1,0 +1,87 @@
+nav {
+  position: fixed;
+  top: 0;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  justify-items: left;
+
+  background-color: rgb(255, 182, 193, 0.2);
+  width: 100%;
+
+  z-index: 1000;
+}
+
+nav > .nav__items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1em;
+  padding-top: 1em;
+  padding-bottom: 0em;
+}
+
+.nav__items > .nav__item {
+  margin-left: 0.3em;
+  font-size: 36px;
+  color: transparent;
+  text-shadow: 0px 0px 3px rgba(23, 222, 232, 0.7);
+  cursor: pointer;
+}
+
+.nav__items > .nav__item__active {
+  position: relative;
+  bottom: 0.2em;
+  color: #17dee8;
+  text-shadow: none;
+  border-bottom: 3px solid #ffb6c1;
+}
+
+.nav__items > .nav__item:hover {
+  position: relative;
+  transition: 150ms linear;
+  border-bottom: 3px solid #ffb6c1;
+  transform: translateY(-0.2em);
+  color: #17dee8;
+  text-shadow: none;
+}
+
+.nav__items > .nav__item__active:hover {
+  transition: none;
+  transform: none;
+}
+
+nav > .nav__login {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding-top: 1em;
+  padding-bottom: 0em;
+}
+
+.nav__login > .nav__username {
+  height: min(5px);
+  color: rgb(255, 182, 193);
+  position: relative;
+  font-size: 18px;
+  bottom: 0.5em;
+}
+
+.nav__login > .nav__username:hover {
+  color: salmon;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.nav__login > .nav__loginLink {
+  margin-right: 0.3em;
+  font-size: 36px;
+  text-align: right;
+  color: transparent;
+  text-shadow: 0px 0px 3px black;
+  cursor: pointer;
+}
+
+.nav__login > .nav__loginLink:hover {
+  text-shadow: none;
+  text-decoration: line-through;
+  text-decoration-color: red;
+  color: black;
+}
