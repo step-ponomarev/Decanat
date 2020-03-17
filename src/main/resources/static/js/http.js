@@ -1,9 +1,11 @@
 'use strict';
 
 export class Http {
+    constructor() {
+    }
     static get(url, callback) {
         let xhr = new XMLHttpRequest();
-        xhr.open('GER', url);
+        xhr.open('GET', url);
 
         xhr.onload = () => {
             if (xhr.status !== 200) {

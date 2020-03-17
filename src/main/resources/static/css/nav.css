@@ -32,6 +32,7 @@ nav > .nav__items {
   bottom: 0.2em;
   color: #17dee8;
   text-shadow: none;
+  cursor: default;
   border-bottom: 3px solid #ffb6c1;
 }
 

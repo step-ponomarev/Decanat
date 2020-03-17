@@ -2,6 +2,7 @@ package spbstu.ponomarev.stepan.DecanatREST.controller;
 
 import org.springframework.web.bind.annotation.*;
 import spbstu.ponomarev.stepan.DecanatREST.domain.Person;
+import spbstu.ponomarev.stepan.DecanatREST.domain.Role;
 import spbstu.ponomarev.stepan.DecanatREST.service.PersonService;
 
 import java.util.List;
@@ -23,6 +24,16 @@ public class PersonController {
   @GetMapping("{id}")
   public Person getById(@PathVariable Long id) {
     return personService.getById(id);
+  }
+
+  @GetMapping("teachers")
+  public List<Person> getTeachers() {
+    return personService.getByRole(Role.TEACHER);
+  }
+
+  @GetMapping("students")
+  public List<Person> getStudents() {
+    return personService.getByRole(Role.STUDENT);
   }
 
   @PostMapping

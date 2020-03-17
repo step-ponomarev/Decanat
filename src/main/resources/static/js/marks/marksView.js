@@ -1,13 +1,14 @@
 'use strict';
 
-export class AboutView {
+export class MarksView {
     constructor(element) {
         this.template =
-            `<div class="about">
-                <div class="about__content" id="about_content"> </div>
-             </div>`;
-        this._element = element;
+            `<div class="subjects">
+          <div class="subjects__filters" id="subjectsFilters"></div>
+          <div class="subjects__table" id="subjectsTable"></div>
+        </div>`;
 
+        this._element = element;
         this.render = this.render.bind(this);
     }
 
