@@ -3,6 +3,7 @@
 import {Nav} from '../nav/nav.js';
 import {About} from '../about/about.js';
 import {Marks} from '../marks/marks.js';
+import {PersonalArea} from "../personalArea/personalArea.js";
 
 export class App {
     constructor() {
@@ -10,6 +11,7 @@ export class App {
         this.subjects = new Marks();
         this.about = new About();
         this.nav = new Nav();
+        this.personalArea = new PersonalArea();
 
         this.openSubjects = (event) => {
             this.subjects.start();
@@ -27,7 +29,7 @@ export class App {
     }
 
     addActions() {
-        const links = Array.from(this.nav.links);
+        const links = this.nav.links;
 
         links.forEach(link => {
             link.addEventListener('click', (event) => {
@@ -49,5 +51,15 @@ export class App {
 
         const aboutLink = this.nav.aboutLink;
         aboutLink.addEventListener('click', this.openAbout);
+
+        const personalAreaLink = this.nav.personalAreaLink;
+
+        personalAreaLink.addEventListener('click', (event) => {
+            this.personalArea.start();
+            this.nav.links.forEach(link => {
+                link.classList.remove('nav__item__active');
+            })
+
+        });
     }
 }

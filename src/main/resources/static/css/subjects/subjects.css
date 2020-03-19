@@ -1,0 +1,97 @@
+.subjects {
+  display: grid;
+  grid-column-gap: 3em;
+  grid-template-columns: 1fr 3fr;
+  justify-items: center;
+}
+
+.subjects > .subjects__filters {
+  width: 100%;
+}
+
+.subjects__filters > .filters__title {
+  font-size: 36px;
+  margin-bottom: 1.3em;
+}
+
+.filter {
+  margin-bottom: 5em;
+  height: min-content;
+  width: 100%;
+}
+
+.filter > .filters__btn {
+  cursor: default;
+  font-size: 18px;
+  text-align: center;
+  border: 1px dotted #ffb6c1;
+  background-color: rgba(255, 182, 193, 0.2);
+  height: 2.5em;
+  width: 100%;
+}
+
+.filter > .filters__dropdownContent {
+  display: none;
+}
+
+.filter:hover > .filters__dropdownContent {
+  display: grid;
+  grid-row-gap: 0em;
+  justify-items: center;
+}
+
+.filters__dropdownContent > a {
+  font-size: 20px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  background-color: rgba(255, 182, 193, 0.2);
+}
+
+.filters__dropdownContent > a:hover {
+  background-color: red;
+}
+
+.subjects > .subjects__table {
+  width: 100%;
+  height: 100%;
+}
+
+.subjects__table > .table__title {
+  text-align: left;
+  height: min-content;
+
+  margin-bottom: 1em;
+}
+
+.subjects__table table {
+  display: table;
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.subjects__table tr {
+  display: grid;
+  grid-column-gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border-bottom: 1px dotted black;
+}
+
+.subjects__table .table__columnName,
+.subjects__table .table__column {
+  text-align: left;
+  width: 100%;
+}
+
+.subjects__table .table__columnName {
+  font-size: 18px;
+  color: black;
+}
+.subjects__table .table__column {
+  font-size: 16px;
+  text-align: left;
+  color: #282828;
+
+  margin-top: 0.2em;
+}

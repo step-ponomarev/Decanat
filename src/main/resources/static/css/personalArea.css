@@ -1,0 +1,75 @@
+.personalArea {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-row-gap: 3em;
+}
+
+.personalArea > .personalArea__title {
+
+}
+
+.personalArea > .personalArea__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    grid-column-gap: 2em;
+    grid-row-gap: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.personalArea__content > .personalArea__editblock {
+    display: grid;
+    justify-items: center;
+    padding: 1em;
+    background-color: rgba(23, 222, 232, 0.3);
+    border: 1px solid rgba(23, 222, 232, 0.7);
+    border-radius: 10%;
+    width: max-content;
+    height: max-content;
+}
+
+.personalArea__editblock > .editblock__title {
+    justify-self: left;
+    text-decoration: underline;
+    text-decoration-color: #ffb6c1;
+    margin-bottom: 1em;
+}
+
+.personalArea__editblock > .editblock__form {
+    display: grid;
+    justify-items: center;
+    grid-row-gap: 0.5em;
+}
+
+.editblock__form > input {
+    width: 100%;
+    font-size: 18px;
+    height: min-content;
+}
+
+.editblock__form > input[type="text"]:focus {
+    background-color: rgba(57, 226, 248, 0.2);
+}
+
+.editblock__form > input[type=button], input[type=submit] {
+    background-color: rgba(57, 226, 248, 0.9);
+    border: none;
+    border-radius: 10%;
+    color: white;
+    padding: 2px 4px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.editblock__form > .form__select {
+    display: grid;
+    width: 100%;
+}
+
+.editblock__form > .from__submitBtn {
+    width: 100%;
+    height: min-content;
+}

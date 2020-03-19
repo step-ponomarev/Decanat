@@ -8,7 +8,7 @@ export class ProjectView {
               </div>
               <div class="project__content">
                 <div class="project__databaseImg">
-                  <img src="./img/about/db.png" alt="db" />
+                  <img src="../../../img/about/db.png" alt="db" />
                   <div class="project__subtitle">
                     Схемма базы данных.
                   </div>

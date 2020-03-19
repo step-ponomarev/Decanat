@@ -15,7 +15,7 @@ export class NavView {
         <div class="nav__logo"></div>
 
         <div class="nav__login">
-          <a class="nav__username" id="userName">
+          <a class="nav__username" id="personalAreaLink">
             ${this._user}
           </a>
           <a class="nav__loginLink">

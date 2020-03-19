@@ -12,7 +12,7 @@ export class TeamView {
                   <div class="teammate__title">developer</div>
                   <div class="teammate__content">
                     <div class="teammate__img">
-                      <img src="./img/about/developer.png" />
+                      <img src="../../../img/about/developer.png" />
                       <div class="teammate__subtitle">
                         Ponomarev S.P.
                       </div>
@@ -44,7 +44,7 @@ export class TeamView {
                   <div class="teammate__title">artis</div>
                   <div class="teammate__content">
                     <div class="teammate__img">
-                      <img src="./img/about/artist.png" />
+                      <img src="../../../img/about/artist.png" />
                       <div class="teammate__subtitle">
                         Avgustinovich N.N.
                       </div>

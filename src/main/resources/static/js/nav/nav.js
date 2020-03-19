@@ -21,6 +21,10 @@ export class Nav {
         return document.querySelector('#subjectsLink');
     }
 
+    get personalAreaLink() {
+        return document.querySelector('#personalAreaLink');
+    }
+
     get links() {
         return Array.from(document.getElementsByClassName('nav__item'));
     }
