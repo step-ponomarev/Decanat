@@ -7,6 +7,10 @@ import {PersonalAreaView} from "./personalAreaView.js";
 export class PersonalArea {
     constructor() {
         this.model = new PersonalAreaModel();
+        this.model.downloadStudents();
+        this.model.downloadTeachers();
+        this.model.downloadSubjects();
+
         this.view = new PersonalAreaView(document.querySelector('#container'));
         this.addForms = new AddForms(this.model);
 

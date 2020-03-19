@@ -12,4 +12,6 @@ export class PersonForm {
         this.view = new PersonFormView(document.querySelector('#personalAreaContent'));
         this.view.render();
     }
+
+
 }

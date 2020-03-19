@@ -3,9 +3,9 @@
 export class Http {
     constructor() {
     }
-    static get(url, callback) {
+    static get(url, callback, async = true) {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
+        xhr.open('GET', url, async);
 
         xhr.onload = () => {
             if (xhr.status !== 200) {
@@ -20,10 +20,10 @@ export class Http {
         xhr.send();
     }
 
-    static post(url, obj, callback) {
+    static post(url, obj, callback, async = true) {
         let xhr = new XMLHttpRequest();
 
-        xhr.open('POST', url);
+        xhr.open('POST', url, async);
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
 
         xhr.onload = () => {

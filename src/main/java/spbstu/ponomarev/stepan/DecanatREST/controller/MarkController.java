@@ -28,8 +28,7 @@ public class MarkController {
   }
 
   @PostMapping
-  public List<Mark> getBySubject(@RequestBody String subject) {
-
-    return null;
+  public void addMark(@RequestBody Mark mark) {
+    markService.addMark(mark);
   }
 }

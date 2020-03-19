@@ -12,6 +12,7 @@ export class GroupFilter {
         this.view = new GroupFilterView(document.querySelector('#subjectsFilters'));
 
         this.view.render();
+        this.model.downloadGroups();
         this.renderFilters();
     }
 

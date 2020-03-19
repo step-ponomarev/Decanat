@@ -6,12 +6,12 @@ import {TableModel} from "./tableModel.js";
 export class Table {
     constructor() {
         this.model = new TableModel();
-        this.model.downloadMarks();
     }
 
     start() {
         this.view = new TableView(document.querySelector('#subjectsTable'));
         this.view.render();
+        this.model.downloadMarks();
         this.renderMarks();
     }
 

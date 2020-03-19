@@ -13,6 +13,8 @@ export class SubjectFilter {
         this.view = new SubjectFilterView(document.querySelector('#subjectsFilters'));
 
         this.view.render();
+
+        this.model.downloadSubjects();
         this.renderFilters();
     }
 

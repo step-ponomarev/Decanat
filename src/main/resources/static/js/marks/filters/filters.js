@@ -9,9 +9,6 @@ import {FiltersModel} from "./filtersModel.js";
 export class Filters {
     constructor() {
         this.model = new FiltersModel();
-        this.model.downloadSubjects();
-        this.model.downloadGroups();
-        this.model.downloadTeachers();
 
         this.subjectFilter = new SubjectFilter(this.model);
         this.groupFilter = new GroupFilter(this.model);

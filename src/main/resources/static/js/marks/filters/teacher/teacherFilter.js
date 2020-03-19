@@ -12,6 +12,7 @@ export class TeacherFilter {
         this.view = new TeacherFilterView(document.querySelector('#subjectsFilters'));
 
         this.view.render();
+        this.model.downloadTeachers();
         this.renderFilters();
     }
 
