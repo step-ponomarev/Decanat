@@ -21,4 +21,8 @@ public class SubjectService {
   public Subject getOne(Long id) {
     return subjectRepository.findById(id).get();
   }
+
+  public Subject addOne(Subject subject) {
+    return subjectRepository.save(subject);
+  }
 }

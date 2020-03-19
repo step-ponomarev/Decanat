@@ -23,4 +23,8 @@ public class MarkService {
   public List<Mark> getAll() {
     return this.markRepository.findAll();
   }
+
+  public void addMark(Mark mark) {
+    this.markRepository.save(mark);
+  }
 }

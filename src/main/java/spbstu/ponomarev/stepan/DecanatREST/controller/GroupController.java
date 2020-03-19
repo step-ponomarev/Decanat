@@ -1,8 +1,6 @@
 package spbstu.ponomarev.stepan.DecanatREST.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import spbstu.ponomarev.stepan.DecanatREST.domain.Group;
 import spbstu.ponomarev.stepan.DecanatREST.service.GroupService;
 
@@ -20,5 +18,12 @@ public class GroupController {
   @GetMapping("all")
   public List<Group> getAll() {
     return groupService.getAll();
+  }
+
+  @PostMapping
+  public Group saveOne(
+      @RequestBody Group group
+  ) {
+    return groupService.saveOne(group);
   }
 }

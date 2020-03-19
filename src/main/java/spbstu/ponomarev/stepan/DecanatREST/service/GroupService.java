@@ -17,4 +17,8 @@ public class GroupService {
   public List<Group> getAll() {
     return groupRepository.findAll();
   }
+
+  public Group saveOne(Group group) {
+    return groupRepository.save(group);
+  }
 }

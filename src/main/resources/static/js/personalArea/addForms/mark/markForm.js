@@ -30,6 +30,7 @@ export class MarkForm {
 
             this.model.postMark(newMark);
 
+            alert('Added');
             frm.preventDefault();
         };
 
@@ -38,6 +39,7 @@ export class MarkForm {
 
     start() {
         this.view = new MarkFormView(document.querySelector('#personalAreaContent'));
+        this.prepareModel();
         this.setActions();
         this.render();
     }
@@ -51,6 +53,12 @@ export class MarkForm {
         this.addStudents();
         this.addTeachers();
         this.addSubjects();
+    }
+
+    prepareModel() {
+        this.model.addStudentToViewMethod = this.view.addStudent;
+        this.model.addTeacherToViewMethod = this.view.addTeacher;
+        this.model.addSubjectToViewMethod = this.view.addSubject;
     }
 
     addStudents() {

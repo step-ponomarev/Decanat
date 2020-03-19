@@ -21,6 +21,11 @@ public class PersonController {
     return personService.getAll();
   }
 
+  @GetMapping("roles")
+  public List<Role> getRoles() {
+    return List.of(Role.values());
+  }
+
   @GetMapping("{id}")
   public Person getById(@PathVariable Long id) {
     return personService.getById(id);

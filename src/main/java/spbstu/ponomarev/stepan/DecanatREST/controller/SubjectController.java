@@ -27,4 +27,11 @@ public class SubjectController {
   ) {
     return subjectService.getOne(id);
   }
+
+  @PostMapping
+  public Subject addOne(
+      @RequestBody Subject subject
+  ) {
+    return subjectService.addOne(subject);
+  }
 }
