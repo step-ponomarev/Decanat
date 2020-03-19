@@ -23,7 +23,7 @@ export class TableView {
 
         this.tableRow = (mark) => `<tr>
                   <td class="table__column">${mark.subject.name}</td>
-                  <td class="table__column">${mark.student.group !== null ? mark.student.group.name : 'none'}</td>
+                  <td class="table__column">${mark.student.group !== null ? mark.student.group.name : '-'}</td>
                   <td class="table__column">${mark.student.firstname} ${mark.student.lastname} ${mark.student.pathername}</td>
                   <td class="table__column">${mark.teacher.firstname} ${mark.teacher.lastname} ${mark.teacher.pathername}</td>
                   <td class="table__column">${mark.value}</td>

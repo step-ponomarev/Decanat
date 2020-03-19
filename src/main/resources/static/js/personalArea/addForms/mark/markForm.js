@@ -30,7 +30,10 @@ export class MarkForm {
 
             this.model.postMark(newMark);
 
-            alert('Added');
+            alert(`${newMark.teacher.firstname} ${newMark.teacher.lastname} 
+                set ${mark} to ${newMark.student.firstname} ${newMark.student.lastname} 
+                    of ${newMark.subject.name}`);
+
             frm.preventDefault();
         };
 

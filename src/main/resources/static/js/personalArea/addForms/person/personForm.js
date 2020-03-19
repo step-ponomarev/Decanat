@@ -34,7 +34,7 @@ export class PersonForm {
             form.lastname.value = '';
             form.pathername.value = '';
 
-            alert(`${newPerson.firstname}, ${newPerson.lastname} was added.`);
+            alert(`${role} ${newPerson.firstname} ${newPerson.lastname} ${newPerson.pathername} was added.`);
 
             frm.preventDefault();
         };

@@ -20,7 +20,7 @@ export class GroupForm {
 
             form.groupname.value = '';
 
-            alert(`Group: ${group.name} was added.`);
+            alert(`Group "${group.name}" was added.`);
 
             frm.preventDefault();
         };
