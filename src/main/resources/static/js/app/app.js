@@ -8,13 +8,13 @@ import {PersonalArea} from "../personalArea/personalArea.js";
 export class App {
     constructor() {
         this.element = document.querySelector('#app');
-        this.subjects = new Marks();
+        this.marks = new Marks();
         this.about = new About();
         this.nav = new Nav();
         this.personalArea = new PersonalArea();
 
         this.openSubjects = (event) => {
-            this.subjects.start();
+            this.marks.start();
         };
 
         this.openAbout = (event) => {

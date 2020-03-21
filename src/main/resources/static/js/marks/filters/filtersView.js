@@ -14,6 +14,7 @@ export class FiltersView {
 
 
     render() {
+        this._element.innerHTML = '';
         this._element.insertAdjacentHTML('beforeend', this.template);
     }
 

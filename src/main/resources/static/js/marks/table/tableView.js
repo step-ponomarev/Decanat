@@ -33,9 +33,11 @@ export class TableView {
 
         this.render = this.render.bind(this);
         this.insertMark = this.insertMark.bind(this);
+        this.clearTable = this.clearTable.bind(this);
     }
 
     render() {
+        this._element.innerHTML = '';
         this._element.insertAdjacentHTML('beforeend', this.template);
     }
 
@@ -43,6 +45,10 @@ export class TableView {
         const tableBody = document.querySelector('#tableBody');
 
         tableBody.insertAdjacentHTML('beforeend', this.tableRow(mark));
+    }
+
+    clearTable() {
+        this._element.querySelector('#tableBody').innerHTML = '';
     }
 }
 
