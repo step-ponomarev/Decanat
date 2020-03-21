@@ -3,12 +3,11 @@
 export class NavView {
     constructor(element) {
         this.template =
-            `<nav class="nav" id="nav">
-                <div class="nav__items">
+            `<div class="nav__items">
                     <a class="nav__item nav__item__active" id="aboutLink">
                         about
                     </a>
-                    <a class="nav__item" id="subjectsLink">
+                    <a class="nav__item" id="subjectsLink" hidden>
                         marks
                     </a>
                 </div>
@@ -19,14 +18,13 @@ export class NavView {
                             login
                             <div class="loginLink__dropDown">
                                 <form class="loginForm" id="loginForm">
-                                    <input name="login" type="text" placeholder="login" required/>
+                                    <input name="username" type="text" placeholder="login" required/>
                                     <input name="password" type="password" placeholder="password" required />
                                     <input type="submit" value="login" class="loginForm__submit" />
                                 </form>
                             </div>
                         </a>
-                    </div>
-            </nav>`;
+                    </div>`;
 
         this.element = element;
         this._user = null;
@@ -37,6 +35,7 @@ export class NavView {
     }
 
     render() {
+        this.element.innerHTML = '';
         this.removeEventListeners();
         this.element.insertAdjacentHTML('afterbegin', this.template);
         this.addUser();
@@ -63,6 +62,9 @@ export class NavView {
         }
 
         const userLink = document.querySelector('#personalAreaLink');
+        const marksItem = document.querySelector('#subjectsLink');
+
+        marksItem.hidden = false;
 
         userLink.insertAdjacentHTML('beforeend', `${this._user}`);
         userLink.hidden = false;

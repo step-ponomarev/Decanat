@@ -31,6 +31,10 @@ export class Http {
                 return;
             }
 
+            if (xhr.responseText === null) {
+                callback(null);
+            }
+            
             let obj = JSON.parse(xhr.responseText);
             callback(obj);
         };

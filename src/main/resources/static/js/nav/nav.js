@@ -1,32 +1,19 @@
-import {NavModel} from './navModel.js';
 import {NavView} from './navView.js';
 
 export class Nav {
-    constructor() {
-        this._model = new NavModel();
+    constructor(model) {
+        this._model = model;
 
-        this.onSubmitLogin = frm => {
-            const form = frm.target;
-
-            const login = form.login.value;
-            const password = form.password.value;
-
-            const user = {
-                id: null,
-                login: login,
-                password: password
-            };
-
-            this._model.loginUser(user);
-        };
-
-        this.start = this.start.bind(this);
+        this.onSubmitLogin = null;
     }
 
     start() {
-        this.view = new NavView(document.querySelector("#app"));
-        this.view.user = this._model.user;
+        this.view = new NavView(document.querySelector("#nav"));
         this.view.onSubmitLogin = this.onSubmitLogin;
+
+        if (this._model.user !== null) {
+            this.view.user = this._model.user.username;
+        }
 
         this.render();
     }
@@ -53,5 +40,9 @@ export class Nav {
 
     get model() {
         return this._model;
+    }
+
+    set onLogin(onsubmit) {
+        this.onSubmitLogin = onsubmit;
     }
 }

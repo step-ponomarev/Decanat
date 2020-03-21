@@ -1,6 +1,7 @@
 'use strict';
 
 import {Nav} from '../nav/nav.js';
+import {AppModel} from "./appModel.js";
 import {About} from '../about/about.js';
 import {Marks} from '../marks/marks.js';
 import {PersonalArea} from "../personalArea/personalArea.js";
@@ -8,11 +9,31 @@ import {PersonalArea} from "../personalArea/personalArea.js";
 export class App {
     constructor() {
         this.element = document.querySelector('#app');
-
-        this.nav = new Nav();
+        this.model = new AppModel();
+        this.nav = new Nav(this.model);
         this.marks = new Marks();
         this.about = new About();
         this.personalArea = new PersonalArea();
+
+        this.onSubmitLogin = frm => {
+            const form = frm.target;
+
+            const username = form.username.value;
+            const password = form.password.value;
+
+            let user = {
+                id: null,
+                username: username,
+                password: password
+            };
+
+            this.model.loginUser(user);
+
+            this.nav.start();
+            this.addActions();
+
+            frm.preventDefault();
+        };
 
         this.openSubjects = (event) => {
             this.marks.start();
@@ -21,6 +42,8 @@ export class App {
         this.openAbout = (event) => {
             this.about.start();
         };
+
+        this.nav.onSubmitLogin = this.onSubmitLogin;
     }
 
     start() {

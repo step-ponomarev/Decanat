@@ -63,6 +63,9 @@ nav > .nav__login {
 }
 
 .nav__login > .nav__username {
+  position: absolute;
+  top: 0.2em;
+  right: 7em;
   height: min(5px);
   color: rgb(255, 182, 193);
   font-size: 18px;
