@@ -9,6 +9,23 @@ body {
     margin: 0;
 }
 
+input[type="text"]:focus, input[type=password]:focus {
+    background-color: rgba(248, 199, 243, 0.3);
+    outline-style: dotted;
+    outline-color: rgba(255, 182, 193, 0.7);
+    outline-width: 1px;
+}
+
+ input[type=button], input[type=submit]  {
+    background-color: rgb(255, 182, 193);
+    border: none;
+    border-radius: 10%;
+    color: white;
+    padding: 2px 4px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .title {
     font-size: 36px;
     color: black;

@@ -11,7 +11,7 @@
 
 .personalArea > .personalArea__content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: auto auto auto auto;
     justify-items: center;
     grid-column-gap: 2em;
     grid-row-gap: 2em;
@@ -23,8 +23,8 @@
     display: grid;
     justify-items: center;
     padding: 1em;
-    background-color: rgba(23, 222, 232, 0.3);
-    border: 1px solid rgba(23, 222, 232, 0.7);
+    background-color: rgba(255, 182, 193, 0.2);
+    border: 1px solid rgba(255, 182, 193, 0.7);
     border-radius: 10%;
     width: max-content;
     height: max-content;
@@ -49,19 +49,12 @@
     height: min-content;
 }
 
-.editblock__form > input[type="text"]:focus {
-    background-color: rgba(57, 226, 248, 0.2);
+.editblock__form > input[type=button], input[type=submit]{
+    margin: 4px 2px;
 }
 
-.editblock__form > input[type=button], input[type=submit] {
-    background-color: rgba(57, 226, 248, 0.9);
-    border: none;
-    border-radius: 10%;
-    color: white;
-    padding: 2px 4px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
+.editblock__form > input[type=button], input[type=submit]:hover {
+    border: 1px solid rgba(255, 0, 14, 0.2);
 }
 
 .editblock__form > .form__select {

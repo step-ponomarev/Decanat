@@ -5,8 +5,9 @@ nav {
   grid-auto-flow: column;
   justify-items: left;
 
-  background-color: rgb(255, 182, 193, 0.2);
+  background-color: rgba(255, 182, 193, 0.2);
   width: 100%;
+  height: max(4em);
 
   z-index: 1000;
 }
@@ -25,6 +26,7 @@ nav > .nav__items {
   color: transparent;
   text-shadow: 0px 0px 3px rgba(23, 222, 232, 0.7);
   cursor: pointer;
+  height: 1.2em;
 }
 
 .nav__items > .nav__item__active {
@@ -63,7 +65,6 @@ nav > .nav__login {
 .nav__login > .nav__username {
   height: min(5px);
   color: rgb(255, 182, 193);
-  position: relative;
   font-size: 18px;
   bottom: 0.5em;
 }
@@ -75,6 +76,7 @@ nav > .nav__login {
 }
 
 .nav__login > .nav__loginLink {
+  display: grid;
   margin-right: 0.3em;
   font-size: 36px;
   text-align: right;
@@ -83,9 +85,31 @@ nav > .nav__login {
   cursor: pointer;
 }
 
+.nav__loginLink > .loginLink__dropDown {
+  display: none;
+  z-index: 2;
+  margin-top: 0.1em;
+  cursor: default;
+  background-color: rgba(255, 182, 193, 0.2);
+  border: 1px solid rgb(235, 120, 137);
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  padding: 0em;
+}
+
 .nav__login > .nav__loginLink:hover {
   text-shadow: none;
-  text-decoration: line-through;
-  text-decoration-color: red;
   color: black;
+  margin-right: 0em;
+}
+
+.nav__login > .nav__loginLink:hover > .loginLink__dropDown {
+  display: block;
+  border-top: 1px solid rgb(255, 182, 193);
+  justify-self: right;
+}
+
+.loginForm {
+  display: grid;
+  grid-row-gap: 0.1em;
 }
