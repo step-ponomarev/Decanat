@@ -43,6 +43,7 @@ export class MarkForm {
     start() {
         this.view = new MarkFormView(document.querySelector('#personalAreaContent'));
         this.prepareModel();
+
         this.setActions();
         this.render();
     }

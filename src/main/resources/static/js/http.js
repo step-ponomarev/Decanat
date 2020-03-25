@@ -3,21 +3,21 @@
 export class Http {
     constructor() {
     }
-    static get(url, callback, async = true) {
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', url, async);
+    static get(url, async = true) {
+        return new Promise(function (resolve, reject) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', url, async);
 
-        xhr.onload = () => {
-            if (xhr.status !== 200) {
-                alert(xhr.status + ': ' + xhr.statusText);
-            } else {
+            xhr.onload = () => {
                 let obj = JSON.parse(xhr.responseText);
-                callback(obj);
-            }
-        };
+                resolve(obj);
+            };
+
+            xhr.onerror = () => reject(new Error(`Get method ${xhr.status} : ${xhr.statusText}`));
 
 
-        xhr.send();
+            xhr.send();
+        });
     }
 
     static post(url, obj, callback, async = true) {

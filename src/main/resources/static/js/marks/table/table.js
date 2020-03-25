@@ -5,13 +5,13 @@ import {TableView} from "./tableView.js";
 export class Table {
     constructor(model) {
         this.model = model;
+        this.model.downloadMarks();
 
         this.renderMarks = this.renderMarks.bind(this);
     }
 
     start() {
         this.view = new TableView(document.querySelector('#subjectsTable'));
-        this.model.downloadMarks();
         this.render();
     }
 

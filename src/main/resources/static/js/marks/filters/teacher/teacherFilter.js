@@ -5,6 +5,7 @@ import {TeacherFilterView} from "./teacherFilterView.js";
 export class TeacherFilter {
     constructor(model) {
         this.model = model;
+        this.model.downloadTeachers();
 
         this.onClick = null;
 
@@ -14,7 +15,7 @@ export class TeacherFilter {
     start() {
         this.view = new TeacherFilterView(document.querySelector('#subjectsFilters'));
         this.view.onclick = this.onClick;
-        this.model.downloadTeachers();
+
 
         this.render();
     }

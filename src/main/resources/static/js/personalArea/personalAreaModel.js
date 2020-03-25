@@ -61,11 +61,11 @@ export class PersonalAreaModel {
     }
 
     downloadRoles() {
-        Http.get('person/roles', this.setRoles, false);
+        Http.get('person/roles').then(result => this.setRoles(result));
     }
 
     downloadGroups() {
-        Http.get('group/all', this.setGroups, false);
+        Http.get('group/all').then(result => this.setGroups(result));
     }
 
     setRoles(roles) {
@@ -105,15 +105,15 @@ export class PersonalAreaModel {
 
 
     downloadStudents() {
-        Http.get('person/students', this.setStudents);
+        Http.get('person/students').then(result => this.setStudents(result));
     }
 
     downloadTeachers() {
-        Http.get('person/teachers', this.setTeachers);
+        Http.get('person/teachers').then(result => this.setTeachers(result));
     }
 
     downloadSubjects() {
-        Http.get('subject/all', this.setSubjects);
+        Http.get('subject/all').then(result => this.setSubjects(result));
     }
 
     setStudents(students) {

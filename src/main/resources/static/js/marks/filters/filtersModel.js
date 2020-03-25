@@ -13,15 +13,15 @@ export class FiltersModel {
     }
 
     downloadSubjects() {
-        Http.get('subject/all', this.setUpSubjects, false);
+        Http.get('subject/all').then(result => this.setUpSubjects(result));
     }
 
     downloadGroups() {
-        Http.get('group/all', this.setUpGroups, false);
+        Http.get('group/all').then(result => this.setUpGroups(result));
     }
 
     downloadTeachers() {
-        Http.get('person/teachers', this.setUpTeachers, false);
+        Http.get('person/teachers').then(result => this.setUpTeachers(result));
     }
 
     get subjects() {

@@ -5,6 +5,7 @@ import {PersonFormView} from "./personFormView.js";
 export class PersonForm {
     constructor(model) {
         this.model = model;
+        this.prepareModel();
 
         this.onSubmit = (frm) => {
             const form = frm.target;
@@ -45,14 +46,13 @@ export class PersonForm {
     start() {
         this.view = new PersonFormView(document.querySelector('#personalAreaContent'));
         this.view.onsubmit = this.onSubmit;
-        this.prepareModel();
+        this.model.addGroupToViewMethod = this.view.addGroup;
 
         this.render();
     }
 
     render() {
         this.view.render();
-
         this.addRoles();
         this.addGroups();
 
@@ -77,6 +77,5 @@ export class PersonForm {
     prepareModel() {
         this.model.downloadRoles();
         this.model.downloadGroups();
-        this.model.addGroupToViewMethod = this.view.addGroup;
     }
 }

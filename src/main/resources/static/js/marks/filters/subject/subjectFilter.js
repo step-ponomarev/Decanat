@@ -5,6 +5,7 @@ import {SubjectFilterView} from "./subjectFilterView.js";
 export class SubjectFilter {
     constructor(model) {
         this.model = model;
+        this.model.downloadSubjects();
 
         this.onClick = null;
 
@@ -15,7 +16,6 @@ export class SubjectFilter {
         this.view = new SubjectFilterView(document.querySelector('#subjectsFilters'));
         this.view.onclick = this.onClick;
 
-        this.model.downloadSubjects();
 
         this.render();
     }

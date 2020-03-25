@@ -5,6 +5,7 @@ import {GroupFilterView} from "./groupFilterView.js";
 export class GroupFilter {
     constructor(model) {
         this.model = model;
+        this.model.downloadGroups();
 
         this.onClick = null;
 
@@ -13,7 +14,7 @@ export class GroupFilter {
 
     start() {
         this.view = new GroupFilterView(document.querySelector('#subjectsFilters'));
-        this.model.downloadGroups();
+
         this.view.onclick = this.onClick;
 
         this.render();
