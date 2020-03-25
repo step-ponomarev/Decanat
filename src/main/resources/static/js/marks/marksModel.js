@@ -8,13 +8,9 @@ export class MarksModel {
         this.downloadSubjects = this.downloadSubjects.bind(this);
         this.downloadGroups = this.downloadGroups.bind(this);
         this.downloadTeachers = this.downloadTeachers.bind(this);
-        this.setUpSubjects = this.setUpSubjects.bind(this);
-        this.setUpGroups = this.setUpGroups.bind(this);
-        this.setUpTeachers = this.setUpTeachers.bind(this);
 
         //Table
         this.downloadMarks = this.downloadMarks.bind(this);
-        this.setUpMarks = this.setUpMarks.bind(this);
 
         this._subjectFilter = null;
         this._teacherFilter = null;
@@ -25,15 +21,27 @@ export class MarksModel {
 
     // Filters
     downloadSubjects() {
-        Http.get('subject/all').then(result =>  this.setUpSubjects(result));
+        return Http.get('subject/all');
     }
 
     downloadGroups() {
-        Http.get('group/all').then(result => this.setUpGroups(result));
+        return Http.get('group/all');
     }
 
     downloadTeachers() {
-        Http.get('person/teachers').then(result => this.setUpTeachers(result));
+        return Http.get('person/teachers');
+    }
+
+    set groups(groups) {
+        this._gropus = groups;
+    }
+
+    set subjects(subjects) {
+        this._subjects = subjects
+    }
+
+    set teachers(teachers) {
+        this._teachers = teachers;
     }
 
     get subjects() {
@@ -48,28 +56,16 @@ export class MarksModel {
         return this._teachers;
     }
 
-    setUpSubjects(subjects) {
-        this._subjects = subjects
-    }
-
-    setUpGroups(groups) {
-        this._gropus = groups;
-    }
-
-    setUpTeachers(teachers) {
-        this._teachers = teachers;
-    }
-
     // Table
     downloadMarks() {
-        Http.get('mark/all').then(result => this.setUpMarks(result));
+        return Http.get('mark/all');
     }
 
     get marks() {
         return this._marks;
     }
 
-    setUpMarks(marks) {
+    set marks(marks) {
         this._marks = marks;
     }
 

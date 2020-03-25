@@ -27,10 +27,12 @@ export class App {
                 password: password
             };
 
-            this.model.loginUser(user);
-
-            this.nav.start();
-            this.addActions();
+            this.model.loginUser(user)
+                .then(result => {
+                    this.model.user = result;
+                    this.nav.start();
+                    this.addActions();
+                });
 
             frm.preventDefault();
         };
@@ -60,7 +62,7 @@ export class App {
                 const currentLink = event.target;
 
                 links.forEach(link => {
-                    if (link.id ===  currentLink.id) {
+                    if (link.id === currentLink.id) {
                         link.classList.add('nav__item__active');
                     } else {
                         link.classList.remove('nav__item__active');

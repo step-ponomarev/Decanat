@@ -22,6 +22,7 @@ export class MarkForm {
             const mark = marks.options[marks.selectedIndex].text;
 
             const newMark = {
+                id: null,
                 student: this.model.getStudent(studentId),
                 subject: this.model.getSubject(subjectId),
                 teacher: this.model.getTeacher(teacherId),

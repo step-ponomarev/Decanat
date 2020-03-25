@@ -5,7 +5,6 @@ import {TableView} from "./tableView.js";
 export class Table {
     constructor(model) {
         this.model = model;
-        this.model.downloadMarks();
 
         this.renderMarks = this.renderMarks.bind(this);
     }
@@ -17,8 +16,11 @@ export class Table {
 
     render() {
         this.view.render();
+        this.model.downloadMarks().then(result => {
+            this.model.marks = result;
 
-        this.renderMarks();
+            this.renderMarks();
+        });
     }
 
     renderMarks() {

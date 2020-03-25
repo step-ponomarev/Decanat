@@ -11,7 +11,7 @@ export class AppModel {
     }
 
     loginUser(user) {
-        Http.post('user/login', user, this.setUser, false);
+        return Http.post('user/login', user);
     }
 
     get user() {

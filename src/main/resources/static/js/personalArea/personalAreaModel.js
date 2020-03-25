@@ -10,9 +10,6 @@ export class PersonalAreaModel {
         this.downloadRoles = this.downloadRoles.bind(this);
         this.downloadGroups = this.downloadGroups.bind(this);
 
-        this.setRoles = this.setRoles.bind(this);
-        this.setGroups = this.setGroups.bind(this);
-
         this.getGroup = this.getGroup.bind(this);
 
         this.addGroup = this.addGroup.bind(this);
@@ -52,27 +49,27 @@ export class PersonalAreaModel {
     postPerson(person) {
        switch (person.role) {
            case 'STUDENT':
-               Http.post('person', person, this.addStudent);
+               Http.post('person', person).then(result => this.addStudent(result));
                break;
            case 'TEACHER':
-               Http.post('person', person, this.addTeacher);
+               Http.post('person', person).then(result => this.addTeacher(result));
                break;
        }
     }
 
     downloadRoles() {
-        Http.get('person/roles').then(result => this.setRoles(result));
+        return Http.get('person/roles');
     }
 
     downloadGroups() {
-        Http.get('group/all').then(result => this.setGroups(result));
+        return Http.get('group/all');
     }
 
-    setRoles(roles) {
+    set roles(roles) {
         this._roles = roles;
     }
 
-    setGroups(groups) {
+    set groups(groups) {
         this._groups = groups;
     }
 
@@ -100,7 +97,7 @@ export class PersonalAreaModel {
     // Mark --------------------
 
     postMark(mark) {
-        Http.post('mark', mark, null);
+        Http.post('mark', mark)
     }
 
 
@@ -185,10 +182,10 @@ export class PersonalAreaModel {
 
     // Subject
     postSubject(subject) {
-        Http.post('subject', subject, this.addSubject);
+        Http.post('subject', subject).then(result => this.addSubject(result));
     }
     // Group
     postGroup(group) {
-        Http.post('group', group, this.addGroup);
+        Http.post('group', group).then(result => this.addGroup(result));
     }
 }
