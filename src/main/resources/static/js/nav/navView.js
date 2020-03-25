@@ -53,6 +53,10 @@ export class NavView {
     addEventListeners() {
         this.loginForm = document.querySelector('#loginForm');
 
+        if (this.loginForm === null) {
+            return;
+        }
+
         this.loginForm.addEventListener('submit', this.loginSubmit);
     }
 
@@ -64,7 +68,13 @@ export class NavView {
         const userLink = document.querySelector('#personalAreaLink');
         const marksItem = document.querySelector('#subjectsLink');
 
+        const loginLink = document.querySelector('#loginLink');
+
         marksItem.hidden = false;
+
+        loginLink.innerHTML = '';
+        loginLink.insertAdjacentHTML('beforeend', 'logout');
+        loginLink.href= '/';
 
         userLink.insertAdjacentHTML('beforeend', `${this._user}`);
         userLink.hidden = false;
