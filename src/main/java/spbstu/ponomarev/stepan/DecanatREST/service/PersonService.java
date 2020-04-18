@@ -18,6 +18,20 @@ public class PersonService {
     this.personRepository = personRepository;
   }
 
+  public void update(Person person) {
+    var personFromDB = personRepository.getOne(person.getId());
+
+    personFromDB.setRole(person.getRole());
+
+    personRepository.save(personFromDB);
+  }
+
+  public void delete(Person person) {
+    var personFromDB = personRepository.getOne(person.getId());
+
+    personRepository.delete(personFromDB);
+  }
+
   public List<Person> getAll() {
     return personRepository.findAll();
   }

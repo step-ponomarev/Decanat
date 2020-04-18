@@ -27,4 +27,8 @@ public class MarkService {
   public void addMark(Mark mark) {
     this.markRepository.save(mark);
   }
+
+  public void deleteMark(Mark mark) {
+    markRepository.delete(mark);
+  }
 }

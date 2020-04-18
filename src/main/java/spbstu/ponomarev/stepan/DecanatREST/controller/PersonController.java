@@ -31,6 +31,11 @@ public class PersonController {
     return personService.getById(id);
   }
 
+  @PutMapping
+  public void update(@RequestBody Person person) {
+    personService.update(person);
+  }
+
   @GetMapping("teachers")
   public List<Person> getTeachers() {
     return personService.getByRole(Role.TEACHER);

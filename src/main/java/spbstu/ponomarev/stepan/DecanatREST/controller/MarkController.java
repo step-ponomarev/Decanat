@@ -27,6 +27,11 @@ public class MarkController {
     return markService.getBySubjectId(id);
   }
 
+  @DeleteMapping
+  public void deleteMark(@RequestBody Mark mark) {
+    markService.deleteMark(mark);
+  }
+
   @PostMapping
   public void addMark(@RequestBody Mark mark) {
     markService.addMark(mark);
