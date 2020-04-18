@@ -45,4 +45,36 @@ export class Http {
             };
         });
     }
+
+    static update(url, obj, async = true) {
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('PUT', url, async);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+        let jsonObj = JSON.stringify(obj);
+        xhr.send(jsonObj);
+
+        return new Promise(function (resolve, reject) {
+            xhr.onerror = () => {
+                reject(new Error(`Put error ${xhr.status} : ${xhr.statusText}`));
+            };
+        });
+    }
+
+    static delete(url, obj, async = true) {
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('DELETE', url, async);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+        let jsonObj = JSON.stringify(obj);
+        xhr.send(jsonObj);
+
+        return new Promise(function (resolve, reject) {
+            xhr.onerror = () => {
+                reject(new Error(`Delete error ${xhr.status} : ${xhr.statusText}`));
+            };
+        });
+    }
 }

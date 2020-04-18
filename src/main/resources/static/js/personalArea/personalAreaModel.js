@@ -20,10 +20,14 @@ export class PersonalAreaModel {
         this.downloadStudents = this.downloadStudents.bind(this);
         this.downloadTeachers = this.downloadTeachers.bind(this);
         this.downloadSubjects = this.downloadSubjects.bind(this);
+        this.downloadPeople = this.downloadPeople.bind(this);
+        this.downloadMarks = this.downloadMarks.bind(this);
 
         this.setStudents = this.setStudents.bind(this);
         this.setTeachers = this.setTeachers.bind(this);
         this.setSubjects = this.setSubjects.bind(this);
+        this.setPeople = this.setPeople.bind(this);
+        this.setMarks = this.setMarks.bind(this);
 
         this.getStudent = this.getStudent.bind(this);
         this.getTeacher = this.getTeacher.bind(this);
@@ -47,14 +51,14 @@ export class PersonalAreaModel {
     // Person -------------------
 
     postPerson(person) {
-       switch (person.role) {
-           case 'STUDENT':
-               Http.post('person', person).then(result => this.addStudent(result));
-               break;
-           case 'TEACHER':
-               Http.post('person', person).then(result => this.addTeacher(result));
-               break;
-       }
+        switch (person.role) {
+            case 'STUDENT':
+                Http.post('person', person).then(result => this.addStudent(result));
+                break;
+            case 'TEACHER':
+                Http.post('person', person).then(result => this.addTeacher(result));
+                break;
+        }
     }
 
     downloadRoles() {
@@ -109,6 +113,14 @@ export class PersonalAreaModel {
         Http.get('person/teachers').then(result => this.setTeachers(result));
     }
 
+    downloadPeople() {
+        Http.get('person/all').then(result => this.setPeople(result));
+    }
+
+    downloadMarks() {
+        Http.get('mark/all').then(result => this.setMarks(result));
+    }
+
     downloadSubjects() {
         Http.get('subject/all').then(result => this.setSubjects(result));
     }
@@ -125,6 +137,14 @@ export class PersonalAreaModel {
         this._subjects = subjects;
     }
 
+    setPeople(people) {
+        this._people = people;
+    }
+
+    setMarks(marks) {
+        this._marks = marks;
+    }
+
     get students() {
         return this._students;
     }
@@ -135,6 +155,14 @@ export class PersonalAreaModel {
 
     get subjects() {
         return this._subjects;
+    }
+
+    get people() {
+        return this._people;
+    }
+
+    get marks() {
+        return this._marks;
     }
 
     getStudent(id) {
@@ -184,6 +212,7 @@ export class PersonalAreaModel {
     postSubject(subject) {
         Http.post('subject', subject).then(result => this.addSubject(result));
     }
+
     // Group
     postGroup(group) {
         Http.post('group', group).then(result => this.addGroup(result));

@@ -10,6 +10,8 @@ export class PersonalArea {
         this.model.downloadStudents();
         this.model.downloadTeachers();
         this.model.downloadSubjects();
+        this.model.downloadPeople();
+        this.model.downloadMarks();
 
         this.view = new PersonalAreaView(document.querySelector('#container'));
         this.addForms = new AddForms(this.model);
